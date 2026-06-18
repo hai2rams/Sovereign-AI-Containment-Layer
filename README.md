@@ -4,7 +4,15 @@ Architecture-first platform for sovereign AI containment: policy enforcement, at
 
 ## Status
 
-**Phase 0 — foundation.** This repository contains the monorepo scaffold and a reusable `t3-adapter` package extracted from a prior reference project. Containment modules are placeholders until implemented.
+**Phase 0 — foundation complete.** Milestone tracking and architecture docs are in place. See [PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md) for the full milestone plan.
+
+## Project tracking
+
+| Document | Purpose |
+|----------|---------|
+| [docs/PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md) | Milestones, success criteria, stop conditions |
+| [docs/AUTOPILOT_RULES.md](docs/AUTOPILOT_RULES.md) | Autopilot execution and git guardrails |
+| [docs/ARCHITECTURE_DECISIONS.md](docs/ARCHITECTURE_DECISIONS.md) | ADR log |
 
 ## Layout
 
@@ -32,9 +40,10 @@ npm run dev
 curl -s http://localhost:4100/health | jq
 curl -s http://localhost:4100/t3/status | jq
 curl -s http://localhost:4100/t3/contract | jq
+curl -s http://localhost:4100/passport/current | jq
 ```
 
-See `docs/curl-smoke-test.md` for expected responses.
+See `docs/curl-smoke-test.md` for expected responses. Agent Passport details: `docs/agent-passport.md`.
 
 ## T3 integration
 
