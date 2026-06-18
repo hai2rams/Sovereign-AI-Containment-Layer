@@ -1,0 +1,34 @@
+{
+  "name": "@sovereign/t3-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable Terminal 3 (T3N) session, secrets map, and contract execution adapter.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "register:contract": "tsx scripts/register-contract.ts",
+    "init:secrets-map": "tsx scripts/init-secrets-map.ts"
+  },
+  "dependencies": {
+    "@terminal3/t3n-sdk": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "dotenv": "^17.4.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

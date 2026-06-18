@@ -1,0 +1,6 @@
+{
+  "name": "@sovereign/policy-engine",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Containment policy engine (scaffold)"
+}

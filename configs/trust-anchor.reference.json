@@ -1,0 +1,15 @@
+{
+  "$schema": "./trust-anchor.reference.schema.json",
+  "description": "Read-only reference to the legacy T3N trust anchor from t3-compliance-gateway (testnet). Not used at runtime by this project.",
+  "sourceProject": "t3-compliance-gateway",
+  "network": "testnet",
+  "contractId": 15,
+  "contractTail": "compliance-gateway-v1",
+  "contractVersion": "0.1.0",
+  "scriptNamePattern": "z:<tenantId>:compliance-gateway-v1",
+  "notes": [
+    "T3N uses a numeric contract id, not an Ethereum contract address.",
+    "Secrets map ACL writers/readers were scoped to this contract id only.",
+    "A new containment trust-anchor contract will be registered separately in a later phase."
+  ]
+}

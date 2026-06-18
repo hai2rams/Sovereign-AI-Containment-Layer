@@ -1,0 +1,6 @@
+{
+  "name": "@sovereign/rag-firewall",
+  "version": "0.0.0",
+  "private": true,
+  "description": "RAG retrieval firewall (scaffold)"
+}
