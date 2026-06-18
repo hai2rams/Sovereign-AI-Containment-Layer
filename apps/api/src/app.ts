@@ -11,6 +11,10 @@ import {
   type ReleaseStatus,
 } from '@sovereign/agent-passport';
 import {
+  createAttestationChallenge,
+  verifyMockAttestation,
+} from '@sovereign/attestation';
+import {
   executeContract,
   getT3Session,
   isT3Configured,
@@ -234,6 +238,32 @@ export function createApp(): Express {
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown sensitive action check error';
       res.status(500).json({ error: 'SensitiveActionCheckFailed', message });
+    }
+  });
+
+  app.post('/attestation/challenge', async (req, res) => {
+    try {
+      const releaseId = req.body?.release_id;
+      if (typeof releaseId !== 'string' || !releaseId.trim()) {
+        res.status(400).json({ error: 'Bad Request', message: 'release_id is required' });
+        return;
+      }
+
+      const challenge = createAttestationChallenge(releaseId.trim());
+      res.status(200).json(challenge);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown challenge error';
+      res.status(500).json({ error: 'AttestationChallengeFailed', message });
+    }
+  });
+
+  app.post('/attestation/verify', async (req, res) => {
+    try {
+      const result = await verifyMockAttestation({ repoRoot, quote: req.body });
+      res.status(200).json(result);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown attestation verify error';
+      res.status(500).json({ error: 'AttestationVerifyFailed', message });
     }
   });
 

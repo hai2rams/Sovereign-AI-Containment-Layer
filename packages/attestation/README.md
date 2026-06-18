@@ -1,3 +1,3 @@
 # Attestation
 
-Evidence collection and verification for containment decisions. Scaffold only — phase 0.
+Mock attestation challenge and verification (Milestone 3). No real TEE quotes yet.

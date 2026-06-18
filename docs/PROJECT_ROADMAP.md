@@ -12,8 +12,8 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 | Item | Status |
 |------|--------|
-| **Active milestone** | Milestone 3 — Mock Attestation Verifier |
-| **Next milestone** | Milestone 3 — Mock Attestation Verifier |
+| **Active milestone** | Milestone 4 — Deterministic Policy Engine |
+| **Next milestone** | Milestone 4 — Deterministic Policy Engine |
 | **API default port** | `4100` |
 | **Repository** | https://github.com/hai2rams/Sovereign-AI-Containment-Layer |
 
@@ -87,20 +87,20 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 ### Milestone 3: Mock Attestation Verifier
 
-**Status:** Pending
+**Status:** Completed
 
 **Success criteria:**
 
-- [ ] Nonce challenge created
-- [ ] Mock attestation quote verified
-- [ ] Release ID checked
-- [ ] Measurement hash checked
-- [ ] Policy hash checked
-- [ ] `debug=false` checked
-- [ ] Stale nonce rejected
-- [ ] Revoked release rejected
-- [ ] Tests pass
-- [ ] Pushed to GitHub
+- [x] Nonce challenge created
+- [x] Mock attestation quote verified
+- [x] Release ID checked
+- [x] Measurement hash checked
+- [x] Policy hash checked
+- [x] `debug=false` checked
+- [x] Stale nonce rejected
+- [x] Revoked release rejected
+- [x] Tests pass
+- [x] Pushed to GitHub
 
 **Testing requirements:**
 

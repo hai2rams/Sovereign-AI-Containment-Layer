@@ -148,3 +148,39 @@ test('POST /releases/:releaseId/check-sensitive-action blocks revoked release', 
   assert.equal(body.allowed, false);
   assert.equal(body.reason, 'release_revoked');
 });
+
+test('POST /attestation/challenge and verify mock quote', async () => {
+  await fetch(`${baseUrl}/releases/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'certified' }),
+  });
+  await fetch(`${baseUrl}/passport/generate`, { method: 'POST' });
+
+  const challengeRes = await fetch(`${baseUrl}/attestation/challenge`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ release_id: 'release-2026-06-23-v1' }),
+  });
+  const challenge = (await challengeRes.json()) as { nonce: string };
+
+  const passportRes = await fetch(`${baseUrl}/passport/current`);
+  const passport = (await passportRes.json()) as {
+    hash_bundle: { policy_rules_hash: string; bundle_root_hash: string };
+  };
+
+  const verifyRes = await fetch(`${baseUrl}/attestation/verify`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      release_id: 'release-2026-06-23-v1',
+      measurement_hash: passport.hash_bundle.bundle_root_hash,
+      policy_hash: passport.hash_bundle.policy_rules_hash,
+      debug: false,
+      nonce: challenge.nonce,
+      issued_at: new Date().toISOString(),
+    }),
+  });
+  const result = (await verifyRes.json()) as { verified: boolean };
+  assert.equal(result.verified, true);
+});

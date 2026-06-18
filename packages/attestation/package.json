@@ -1,6 +1,28 @@
 {
   "name": "@sovereign/attestation",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "description": "Attestation and evidence (scaffold)"
+  "description": "Mock attestation challenge and verification for containment releases.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx --test src/**/*.test.ts"
+  },
+  "dependencies": {
+    "@sovereign/agent-passport": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
 }
