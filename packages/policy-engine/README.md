@@ -1,3 +1,3 @@
-# Policy engine
+# Deterministic policy engine (Milestone 4).
 
-Declarative policy evaluation for agent actions and data boundaries. Scaffold only — phase 0.
+See `POST /policy/evaluate` and `docs/PROJECT_ROADMAP.md`.

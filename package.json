@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run build -w @sovereign/t3-adapter && npm run build -w @sovereign/agent-passport && npm run build -w @sovereign/attestation && npm run dev -w @sovereign/api",
+    "dev": "npm run build -w @sovereign/t3-adapter && npm run build -w @sovereign/agent-passport && npm run build -w @sovereign/attestation && npm run build -w @sovereign/policy-engine && npm run dev -w @sovereign/api",
     "generate-passport": "npm run build -w @sovereign/agent-passport && npm run generate-passport -w @sovereign/agent-passport",
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",

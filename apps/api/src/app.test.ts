@@ -184,3 +184,28 @@ test('POST /attestation/challenge and verify mock quote', async () => {
   const result = (await verifyRes.json()) as { verified: boolean };
   assert.equal(result.verified, true);
 });
+
+test('POST /policy/evaluate blocks excessive payment', async () => {
+  await fetch(`${baseUrl}/releases/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'certified' }),
+  });
+
+  const response = await fetch(`${baseUrl}/policy/evaluate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      action: 'payment.transfer',
+      parameters: { amount: 5000, currency: 'USD', destination: 'approved-vendor-001' },
+      source_trust_level: 1,
+      session_id: 'session-demo',
+      release_id: 'release-2026-06-23-v1',
+      attestation_id: 'attest_demo',
+      evidence_summary: 'Invoice payment proposal.',
+    }),
+  });
+  const body = (await response.json()) as { allowed: boolean; reason: string };
+  assert.equal(body.allowed, false);
+  assert.equal(body.reason, 'amount_limit_exceeded');
+});

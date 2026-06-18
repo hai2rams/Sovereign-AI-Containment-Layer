@@ -1,5 +1,9 @@
 {
   "policy_version": "0.1.0",
+  "approved_payment_destinations": [
+    "approved-vendor-001",
+    "treasury-ops-account"
+  ],
   "rules": [
     {
       "id": "payment.transfer.max_amount",

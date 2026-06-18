@@ -14,6 +14,7 @@ import {
   createAttestationChallenge,
   verifyMockAttestation,
 } from '@sovereign/attestation';
+import { evaluatePolicy } from '@sovereign/policy-engine';
 import {
   executeContract,
   getT3Session,
@@ -264,6 +265,17 @@ export function createApp(): Express {
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown attestation verify error';
       res.status(500).json({ error: 'AttestationVerifyFailed', message });
+    }
+  });
+
+  app.post('/policy/evaluate', async (req, res) => {
+    try {
+      const proposal = req.body?.proposal ?? req.body;
+      const result = await evaluatePolicy({ repoRoot, proposal });
+      res.status(200).json(result);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown policy evaluation error';
+      res.status(500).json({ error: 'PolicyEvaluateFailed', message });
     }
   });
 

@@ -1,8 +1,8 @@
 {
-  "name": "@sovereign/policy-engine",
+  "name": "@sovereign/action-token-broker",
   "version": "0.1.0",
   "private": true,
-  "description": "Deterministic policy evaluation for agent action proposals.",
+  "description": "Short-lived capability-scoped action tokens for containment layer.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,8 @@
     "test": "tsx --test src/**/*.test.ts"
   },
   "dependencies": {
-    "@sovereign/agent-passport": "*"
+    "@sovereign/agent-passport": "*",
+    "@sovereign/policy-engine": "*"
   },
   "devDependencies": {
     "@types/node": "^25.9.2",
