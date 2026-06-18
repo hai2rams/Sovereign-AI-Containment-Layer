@@ -43,7 +43,7 @@ curl -s http://localhost:4100/t3/contract | jq
 curl -s http://localhost:4100/passport/current | jq
 ```
 
-See `docs/curl-smoke-test.md` for expected responses. Agent Passport details: `docs/agent-passport.md`.
+See `docs/curl-smoke-test.md` for expected responses. [Agent Passport](docs/agent-passport.md) · [Release registry](docs/release-registry.md).
 
 ## T3 integration
 

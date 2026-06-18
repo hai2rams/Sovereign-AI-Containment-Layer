@@ -99,3 +99,52 @@ test('POST /passport/generate creates passport', async () => {
   const currentBody = (await current.json()) as { release_id: string };
   assert.equal(currentBody.release_id, body.release_id);
 });
+
+test('POST /releases/register registers passport release', async () => {
+  const response = await fetch(`${baseUrl}/releases/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'draft' }),
+  });
+  assert.equal(response.status, 200);
+  const body = (await response.json()) as { release_id: string; status: string };
+  assert.equal(typeof body.release_id, 'string');
+  assert.equal(body.status, 'draft');
+});
+
+test('GET /releases/:releaseId returns registered release', async () => {
+  const register = await fetch(`${baseUrl}/releases/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'certified' }),
+  });
+  const registered = (await register.json()) as { release_id: string };
+
+  const response = await fetch(`${baseUrl}/releases/${registered.release_id}`);
+  assert.equal(response.status, 200);
+  const body = (await response.json()) as { status: string };
+  assert.equal(body.status, 'certified');
+});
+
+test('POST /releases/:releaseId/check-sensitive-action blocks revoked release', async () => {
+  const register = await fetch(`${baseUrl}/releases/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'draft' }),
+  });
+  const registered = (await register.json()) as { release_id: string };
+
+  await fetch(`${baseUrl}/releases/${registered.release_id}/status`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'revoked' }),
+  });
+
+  const response = await fetch(
+    `${baseUrl}/releases/${registered.release_id}/check-sensitive-action`,
+    { method: 'POST' },
+  );
+  const body = (await response.json()) as { allowed: boolean; reason: string };
+  assert.equal(body.allowed, false);
+  assert.equal(body.reason, 'release_revoked');
+});

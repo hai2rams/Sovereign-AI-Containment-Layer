@@ -21,6 +21,8 @@ curl -s http://localhost:4100/t3/status | jq
 curl -s http://localhost:4100/t3/contract | jq
 curl -s http://localhost:4100/passport/current | jq
 curl -s -X POST http://localhost:4100/passport/generate | jq
+curl -s -X POST http://localhost:4100/releases/register -H 'Content-Type: application/json' -d '{"status":"draft"}' | jq
+curl -s -X POST http://localhost:4100/releases/release-2026-06-23-v1/check-sensitive-action | jq
 ```
 
 ## Expected output (health)

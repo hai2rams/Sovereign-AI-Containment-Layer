@@ -12,8 +12,8 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 | Item | Status |
 |------|--------|
-| **Active milestone** | Milestone 2 — Local Agent Release Registry |
-| **Next milestone** | Milestone 2 — Local Agent Release Registry |
+| **Active milestone** | Milestone 3 — Mock Attestation Verifier |
+| **Next milestone** | Milestone 3 — Mock Attestation Verifier |
 | **API default port** | `4100` |
 | **Repository** | https://github.com/hai2rams/Sovereign-AI-Containment-Layer |
 
@@ -66,17 +66,17 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 ### Milestone 2: Local Agent Release Registry
 
-**Status:** Pending
+**Status:** Completed
 
 **Success criteria:**
 
-- [ ] Release registry exists
-- [ ] Statuses supported: `draft`, `certified`, `suspended`, `revoked`, `under_review`
-- [ ] Generated passport can be registered
-- [ ] Release status can be queried
-- [ ] Revoked release blocks future sensitive action
-- [ ] Tests pass
-- [ ] Pushed to GitHub
+- [x] Release registry exists
+- [x] Statuses supported: `draft`, `certified`, `suspended`, `revoked`, `under_review`
+- [x] Generated passport can be registered
+- [x] Release status can be queried
+- [x] Revoked release blocks future sensitive action
+- [x] Tests pass
+- [x] Pushed to GitHub
 
 **Testing requirements:**
 
@@ -292,5 +292,6 @@ Autopilot and contributors must **stop** and request human review when:
 
 - [AUTOPILOT_RULES.md](./AUTOPILOT_RULES.md) — execution guardrails
 - [ARCHITECTURE_DECISIONS.md](./ARCHITECTURE_DECISIONS.md) — ADR log
-- [agent-passport.md](./agent-passport.md) — Milestone 1 design (when implemented)
+- [agent-passport.md](./agent-passport.md) — Milestone 1 — Agent Passport
+- [release-registry.md](./release-registry.md) — Milestone 2 — Release registry
 - [reuse-map.md](./reuse-map.md) — T3 adapter extraction from reference project

@@ -1,7 +1,14 @@
 import express, { type Express } from 'express';
 import {
+  checkSensitiveActionAllowed,
   generateAgentPassport,
+  getRelease,
+  isReleaseStatus,
+  listReleases,
   readAgentPassport,
+  registerRelease,
+  updateReleaseStatus,
+  type ReleaseStatus,
 } from '@sovereign/agent-passport';
 import {
   executeContract,
@@ -145,6 +152,88 @@ export function createApp(): Express {
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown passport generation error';
       res.status(500).json({ error: 'PassportGenerateFailed', message });
+    }
+  });
+
+  app.get('/releases', async (_req, res) => {
+    try {
+      const releases = await listReleases(repoRoot);
+      res.status(200).json({ count: releases.length, releases });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown release list error';
+      res.status(500).json({ error: 'ReleaseListFailed', message });
+    }
+  });
+
+  app.get('/releases/:releaseId', async (req, res) => {
+    try {
+      const release = await getRelease(repoRoot, req.params.releaseId);
+      if (!release) {
+        res.status(404).json({
+          available: false,
+          reason: 'release_not_found',
+          release_id: req.params.releaseId,
+        });
+        return;
+      }
+
+      res.status(200).json(release);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown release read error';
+      res.status(500).json({ error: 'ReleaseReadFailed', message });
+    }
+  });
+
+  app.post('/releases/register', async (req, res) => {
+    try {
+      const requestedStatus = req.body?.status as string | undefined;
+      const status: ReleaseStatus =
+        requestedStatus && isReleaseStatus(requestedStatus) ? requestedStatus : 'draft';
+
+      let passport = await readAgentPassport(repoRoot);
+      if (!passport) {
+        passport = await generateAgentPassport({ repoRoot });
+      }
+
+      const record = await registerRelease(repoRoot, passport, status);
+      res.status(200).json(record);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown release registration error';
+      res.status(500).json({ error: 'ReleaseRegisterFailed', message });
+    }
+  });
+
+  app.patch('/releases/:releaseId/status', async (req, res) => {
+    try {
+      const status = req.body?.status;
+      if (typeof status !== 'string' || !isReleaseStatus(status)) {
+        res.status(400).json({
+          error: 'Bad Request',
+          message: 'Body must include valid status',
+          allowed_statuses: ['draft', 'certified', 'suspended', 'revoked', 'under_review'],
+        });
+        return;
+      }
+
+      const record = await updateReleaseStatus(repoRoot, req.params.releaseId, status);
+      res.status(200).json(record);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown release status update error';
+      if (message.startsWith('Release not found')) {
+        res.status(404).json({ error: 'ReleaseNotFound', message });
+        return;
+      }
+      res.status(500).json({ error: 'ReleaseStatusUpdateFailed', message });
+    }
+  });
+
+  app.post('/releases/:releaseId/check-sensitive-action', async (req, res) => {
+    try {
+      const check = await checkSensitiveActionAllowed(repoRoot, req.params.releaseId);
+      res.status(200).json(check);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown sensitive action check error';
+      res.status(500).json({ error: 'SensitiveActionCheckFailed', message });
     }
   });
 
