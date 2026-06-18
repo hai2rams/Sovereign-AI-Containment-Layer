@@ -18,6 +18,24 @@ sovereign-ai-containment/
 └── docs/           # Architecture and reuse documentation
 ```
 
+## API
+
+The API runs on port **4100** by default (`PORT` in `configs/.env` overrides).
+
+```bash
+cp configs/.env.example configs/.env
+npm install
+npm run dev
+```
+
+```bash
+curl -s http://localhost:4100/health | jq
+curl -s http://localhost:4100/t3/status | jq
+curl -s http://localhost:4100/t3/contract | jq
+```
+
+See `docs/curl-smoke-test.md` for expected responses.
+
 ## T3 integration
 
 Reusable Terminal 3 client code lives in `packages/t3-adapter/`. See `docs/reuse-map.md` for what was carried over from the reference project and how the legacy trust anchor contract is referenced.

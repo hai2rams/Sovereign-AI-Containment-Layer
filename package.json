@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "dev": "npm run build -w @sovereign/t3-adapter && npm run dev -w @sovereign/api",
+    "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "build": "npm run build --workspaces --if-present"
   },
