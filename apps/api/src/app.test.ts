@@ -209,3 +209,42 @@ test('POST /policy/evaluate blocks excessive payment', async () => {
   assert.equal(body.allowed, false);
   assert.equal(body.reason, 'amount_limit_exceeded');
 });
+
+test('POST /tokens/issue and verify valid token', async () => {
+  await fetch(`${baseUrl}/releases/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: 'certified' }),
+  });
+  await fetch(`${baseUrl}/passport/generate`, { method: 'POST' });
+
+  const proposal = {
+    action: 'payment.transfer',
+    parameters: { amount: 25, currency: 'USD', destination: 'approved-vendor-001' },
+    source_trust_level: 1,
+    session_id: 'session-token',
+    release_id: 'release-2026-06-23-v1',
+    attestation_id: 'attest_token',
+    evidence_summary: 'Vendor payment.',
+  };
+
+  const issueRes = await fetch(`${baseUrl}/tokens/issue`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(proposal),
+  });
+  assert.equal(issueRes.status, 200);
+  const issued = (await issueRes.json()) as { token: string };
+
+  const verifyRes = await fetch(`${baseUrl}/tokens/verify`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      token: issued.token,
+      expected_action: 'payment.transfer',
+      expected_release_id: 'release-2026-06-23-v1',
+    }),
+  });
+  const verified = (await verifyRes.json()) as { valid: boolean };
+  assert.equal(verified.valid, true);
+});

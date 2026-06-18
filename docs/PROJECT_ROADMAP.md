@@ -12,8 +12,8 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 | Item | Status |
 |------|--------|
-| **Active milestone** | M5 — T3-Style Action Token Broker |
-| **Next milestone** | M5 — T3-Style Action Token Broker |
+| **Active milestone** | M6 — RAG Firewall + Source Trust Engine |
+| **Next milestone** | M6 — RAG Firewall + Source Trust Engine |
 | **API default port** | `4100` |
 | **Repository** | https://github.com/hai2rams/Sovereign-AI-Containment-Layer |
 
@@ -134,8 +134,6 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 **Status:** Completed
 
-> **Note:** Implementation and tests complete locally; final push to GitHub may still be pending at roadmap update time. All success criteria below are satisfied in the working tree.
-
 **Success criteria:**
 
 - [x] Strict JSON action proposal validation
@@ -164,22 +162,22 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 ### M5 — T3-Style Action Token Broker
 
-**Status:** Pending / Next
+**Status:** Completed
 
 **Success criteria:**
 
-- [ ] Short-lived capability-scoped action tokens issued
-- [ ] Token bound to agent DID, release ID, attestation ID, session ID, action, policy hash, expiry
-- [ ] Token bound to max amount and allowed destination where applicable
-- [ ] Expired token rejected
-- [ ] Wrong action rejected
-- [ ] Wrong release rejected
-- [ ] Revoked release rejected
-- [ ] Token does not expose secrets
-- [ ] `/tokens/issue` works
-- [ ] `/tokens/verify` works
-- [ ] Tests pass
-- [ ] Pushed to GitHub
+- [x] Short-lived capability-scoped action tokens issued
+- [x] Token bound to agent DID, release ID, attestation ID, session ID, action, policy hash, expiry
+- [x] Token bound to max amount and allowed destination where applicable
+- [x] Expired token rejected
+- [x] Wrong action rejected
+- [x] Wrong release rejected
+- [x] Revoked release rejected
+- [x] Token does not expose secrets
+- [x] `/tokens/issue` works
+- [x] `/tokens/verify` works
+- [x] Tests pass
+- [x] Pushed to GitHub
 
 **Testing requirements:**
 

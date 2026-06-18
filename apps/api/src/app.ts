@@ -16,6 +16,11 @@ import {
 } from '@sovereign/attestation';
 import { evaluatePolicy } from '@sovereign/policy-engine';
 import {
+  getDevSigningKey,
+  issueActionToken,
+  verifyActionToken,
+} from '@sovereign/action-token-broker';
+import {
   executeContract,
   getT3Session,
   isT3Configured,
@@ -276,6 +281,51 @@ export function createApp(): Express {
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown policy evaluation error';
       res.status(500).json({ error: 'PolicyEvaluateFailed', message });
+    }
+  });
+
+  app.post('/tokens/issue', async (req, res) => {
+    try {
+      const body = req.body ?? {};
+      const proposal = body.proposal ?? body;
+      const result = await issueActionToken({
+        repoRoot,
+        agent_did: body.agent_did ?? 'did:t3n:agent:sovereign-ai-containment',
+        release_id: body.release_id ?? proposal.release_id,
+        attestation_id: body.attestation_id ?? proposal.attestation_id,
+        session_id: body.session_id ?? proposal.session_id,
+        action: body.action ?? proposal.action,
+        policy_hash: body.policy_hash,
+        proposal,
+        ttl_seconds: body.ttl_seconds,
+        signingKey: getDevSigningKey(),
+      });
+      res.status(200).json(result);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown token issue error';
+      res.status(400).json({ error: 'TokenIssueFailed', message });
+    }
+  });
+
+  app.post('/tokens/verify', async (req, res) => {
+    try {
+      const token = req.body?.token;
+      if (typeof token !== 'string' || !token.trim()) {
+        res.status(400).json({ error: 'Bad Request', message: 'token is required' });
+        return;
+      }
+
+      const result = await verifyActionToken({
+        repoRoot,
+        token: token.trim(),
+        expected_action: req.body?.expected_action,
+        expected_release_id: req.body?.expected_release_id,
+        signingKey: getDevSigningKey(),
+      });
+      res.status(200).json(result);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown token verify error';
+      res.status(500).json({ error: 'TokenVerifyFailed', message });
     }
   });
 
