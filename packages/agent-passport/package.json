@@ -1,6 +1,30 @@
 {
   "name": "@sovereign/agent-passport",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "description": "Agent identity and capability passport (scaffold)"
+  "description": "Deterministic hashing and Agent Passport generation for certified release artifacts.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx --test src/**/*.test.ts",
+    "generate-passport": "tsx scripts/generate-passport.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "policy_version": "0.1.0",
+  "rules": [
+    {
+      "id": "payment.transfer.max_amount",
+      "action": "payment.transfer",
+      "constraint": { "max_amount": 50, "currency": "USD" }
+    },
+    {
+      "id": "payment.transfer.approved_destination",
+      "action": "payment.transfer",
+      "constraint": { "requires_approved_destination": true }
+    },
+    {
+      "id": "payment.transfer.block_high_trust_source",
+      "action": "payment.transfer",
+      "constraint": { "block_when_source_trust_level_gte": 3 }
+    },
+    {
+      "id": "public_web.read_only",
+      "source_trust_level": 3,
+      "constraint": { "force_mode": "read_only" }
+    },
+    {
+      "id": "unknown_source.quarantine",
+      "source_trust_level": 4,
+      "constraint": { "force_mode": "quarantine" }
+    },
+    {
+      "id": "memory.write.block_public_web",
+      "action": "memory.write",
+      "source_trust_level": 3,
+      "constraint": { "enabled": false }
+    },
+    {
+      "id": "memory.write.block_unknown",
+      "action": "memory.write",
+      "source_trust_level": 4,
+      "constraint": { "enabled": false }
+    },
+    {
+      "id": "policy.override.blocked",
+      "constraint": { "block_policy_override_attempts": true }
+    },
+    {
+      "id": "attestation.required_sensitive",
+      "constraint": { "block_sensitive_actions_without_attestation": true }
+    },
+    {
+      "id": "action_token.expired",
+      "constraint": { "block_expired_action_token": true }
+    },
+    {
+      "id": "release.revoked",
+      "constraint": { "block_revoked_release": true }
+    }
+  ]
+}

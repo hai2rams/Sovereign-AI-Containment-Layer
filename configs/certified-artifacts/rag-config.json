@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "raw_content_untrusted": true,
+  "sanitize_before_model_context": true,
+  "normalize_unicode": true,
+  "strip_hidden_text": true,
+  "strip_scripts_and_html": true,
+  "detect_indirect_prompt_injection": true,
+  "assign_source_trust_level": true,
+  "allow_degraded_mode": true,
+  "allow_quarantine_mode": true,
+  "trust_levels": {
+    "0": "internal_certified",
+    "1": "partner_verified",
+    "2": "operator_uploaded",
+    "3": "public_web",
+    "4": "unknown"
+  }
+}

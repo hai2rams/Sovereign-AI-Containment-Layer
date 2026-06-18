@@ -1,0 +1,7 @@
+{
+  "model_id": "sovereign-containment-base",
+  "provider": "placeholder",
+  "version": "0.1.0",
+  "modality": ["text"],
+  "notes": "Model reference only. Milestone 1 does not invoke the model."
+}

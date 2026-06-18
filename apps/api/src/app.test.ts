@@ -67,3 +67,35 @@ test('GET /t3/contract returns contract shape', async () => {
   assert.equal(typeof body.contractVersion, 'string');
   assert.equal(typeof body.message, 'string');
 });
+
+test('GET /passport/current fails safely when missing', async () => {
+  const response = await fetch(`${baseUrl}/passport/current`);
+  assert.equal(response.status, 200);
+  const body = (await response.json()) as {
+    available?: boolean;
+    reason?: string;
+    agent_did?: string;
+  };
+
+  if (body.available === false) {
+    assert.equal(body.reason, 'passport_not_generated');
+  } else {
+    assert.equal(body.agent_did, 'did:t3n:agent:sovereign-ai-containment');
+  }
+});
+
+test('POST /passport/generate creates passport', async () => {
+  const response = await fetch(`${baseUrl}/passport/generate`, { method: 'POST' });
+  assert.equal(response.status, 200);
+  const body = (await response.json()) as {
+    agent_did: string;
+    release_id: string;
+    hash_bundle: { bundle_root_hash: string };
+  };
+  assert.equal(body.agent_did, 'did:t3n:agent:sovereign-ai-containment');
+  assert.match(body.hash_bundle.bundle_root_hash, /^sha256:[a-f0-9]{64}$/);
+
+  const current = await fetch(`${baseUrl}/passport/current`);
+  const currentBody = (await current.json()) as { release_id: string };
+  assert.equal(currentBody.release_id, body.release_id);
+});

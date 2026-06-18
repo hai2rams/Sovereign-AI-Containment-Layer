@@ -11,6 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@sovereign/agent-passport": "*",
     "@sovereign/t3-adapter": "*",
     "dotenv": "^17.4.2",
     "express": "^5.2.1"

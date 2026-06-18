@@ -1,0 +1,69 @@
+{
+  "manifest_version": "0.1.0",
+  "tools": [
+    {
+      "name": "rag.retrieve",
+      "description": "Retrieve passages from approved corpora with source trust labeling.",
+      "permission_level": "read",
+      "allowed_source_trust_levels": [0, 1, 2],
+      "human_approval_required": false,
+      "enabled": true
+    },
+    {
+      "name": "vault.read",
+      "description": "Read non-secret configuration from the sealed vault namespace.",
+      "permission_level": "read",
+      "allowed_source_trust_levels": [0, 1],
+      "human_approval_required": false,
+      "enabled": true
+    },
+    {
+      "name": "payment.transfer",
+      "description": "Propose a payment transfer subject to policy limits and approval.",
+      "permission_level": "sensitive",
+      "allowed_source_trust_levels": [0, 1],
+      "human_approval_required": true,
+      "enabled": true
+    },
+    {
+      "name": "audit.write",
+      "description": "Append an audit event to the containment audit ledger.",
+      "permission_level": "write",
+      "allowed_source_trust_levels": [0, 1, 2, 3],
+      "human_approval_required": false,
+      "enabled": true
+    },
+    {
+      "name": "memory.write",
+      "description": "Write labeled, expiring memory entries without privilege escalation.",
+      "permission_level": "write",
+      "allowed_source_trust_levels": [0, 1],
+      "human_approval_required": true,
+      "enabled": true
+    },
+    {
+      "name": "t3.issue_action_token",
+      "description": "Request a scoped T3 action token for an approved action proposal.",
+      "permission_level": "sensitive",
+      "allowed_source_trust_levels": [0, 1],
+      "human_approval_required": true,
+      "enabled": true
+    },
+    {
+      "name": "t3.verify_attestation",
+      "description": "Verify attestation evidence for a release or runtime claim.",
+      "permission_level": "read",
+      "allowed_source_trust_levels": [0, 1, 2, 3],
+      "human_approval_required": false,
+      "enabled": true
+    },
+    {
+      "name": "policy.evaluate",
+      "description": "Evaluate an action proposal against certified policy rules.",
+      "permission_level": "read",
+      "allowed_source_trust_levels": [0, 1, 2, 3],
+      "human_approval_required": false,
+      "enabled": true
+    }
+  ]
+}

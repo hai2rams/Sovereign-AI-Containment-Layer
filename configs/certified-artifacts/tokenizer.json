@@ -1,0 +1,6 @@
+{
+  "tokenizer_id": "sovereign-containment-tokenizer",
+  "version": "0.1.0",
+  "normalization": "unicode_nfc",
+  "notes": "Tokenizer reference only. Milestone 1 does not tokenize inputs."
+}

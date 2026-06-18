@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "writes_require_source_label": true,
+  "writes_require_expiry": true,
+  "memory_cannot_modify_policy": true,
+  "memory_cannot_modify_tool_permissions": true,
+  "memory_cannot_increase_privilege": true,
+  "public_web_writes_disabled": true,
+  "unknown_source_writes_disabled": true,
+  "revoked_memory_ignored": true,
+  "default_ttl_seconds": 86400
+}

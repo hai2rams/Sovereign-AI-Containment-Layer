@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "audit_all_sensitive_actions": true,
+  "audit_blocked_actions": true,
+  "audit_quarantine_events": true,
+  "audit_release_generation": true,
+  "include_fields": [
+    "previous_state_root",
+    "new_state_root",
+    "policy_hash",
+    "release_id",
+    "agent_did"
+  ]
+}

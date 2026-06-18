@@ -12,8 +12,8 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 | Item | Status |
 |------|--------|
-| **Active milestone** | Documentation + tracking setup (this step) |
-| **Next milestone** | Milestone 1 — Agent Passport + Certified Control Artifacts |
+| **Active milestone** | Milestone 2 — Local Agent Release Registry |
+| **Next milestone** | Milestone 2 — Local Agent Release Registry |
 | **API default port** | `4100` |
 | **Repository** | https://github.com/hai2rams/Sovereign-AI-Containment-Layer |
 
@@ -41,18 +41,18 @@ We do **not** prove that an LLM is inherently safe. We prove that an autonomous 
 
 ### Milestone 1: Agent Passport + Certified Control Artifacts
 
-**Status:** Pending
+**Status:** Completed
 
 **Success criteria:**
 
-- [ ] Certified artifact folder exists
-- [ ] System/developer prompts exist
-- [ ] Hash bundle generator works
-- [ ] `artifacts/agent-passport.json` generated
-- [ ] `/passport/current` works
-- [ ] `/passport/generate` works
-- [ ] Tests pass
-- [ ] Pushed to GitHub
+- [x] Certified artifact folder exists
+- [x] System/developer prompts exist
+- [x] Hash bundle generator works
+- [x] `artifacts/agent-passport.json` generated
+- [x] `/passport/current` works
+- [x] `/passport/generate` works
+- [x] Tests pass
+- [x] Pushed to GitHub
 
 **Testing requirements:**
 

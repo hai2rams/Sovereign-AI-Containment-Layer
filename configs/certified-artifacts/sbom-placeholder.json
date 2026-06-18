@@ -1,0 +1,6 @@
+{
+  "version": "0.1.0",
+  "format": "cyclonedx-placeholder",
+  "components": [],
+  "notes": "SBOM placeholder for Milestone 1. Populate in a later supply-chain milestone."
+}

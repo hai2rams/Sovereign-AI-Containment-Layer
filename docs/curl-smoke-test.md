@@ -19,6 +19,8 @@ The API listens at `http://localhost:4100` unless `PORT` is set.
 curl -s http://localhost:4100/health | jq
 curl -s http://localhost:4100/t3/status | jq
 curl -s http://localhost:4100/t3/contract | jq
+curl -s http://localhost:4100/passport/current | jq
+curl -s -X POST http://localhost:4100/passport/generate | jq
 ```
 
 ## Expected output (health)

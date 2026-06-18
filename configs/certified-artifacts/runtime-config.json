@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0",
+  "runtime_target": "tee-ready",
+  "tee_required_for_sensitive_actions": true,
+  "attestation_required_for_sensitive_actions": true,
+  "default_port": 4100,
+  "debug_mode_allowed": false
+}

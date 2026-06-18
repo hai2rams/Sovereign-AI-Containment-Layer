@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "approved_endpoints": [
+    {
+      "id": "health-check",
+      "host": "localhost",
+      "port": 4100,
+      "path_prefix": "/health",
+      "purpose": "local API liveness"
+    },
+    {
+      "id": "t3-status",
+      "host": "localhost",
+      "port": 4100,
+      "path_prefix": "/t3/status",
+      "purpose": "T3 adapter status (no secrets)"
+    },
+    {
+      "id": "passport-api",
+      "host": "localhost",
+      "port": 4100,
+      "path_prefix": "/passport",
+      "purpose": "agent passport read/generate"
+    }
+  ],
+  "notes": "Placeholder approved endpoints only. No credentials or API keys stored here."
+}

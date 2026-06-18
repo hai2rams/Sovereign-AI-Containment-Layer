@@ -20,8 +20,10 @@ npm run dev -w @sovereign/api
 | GET | `/health` | Liveness |
 | GET | `/t3/status` | T3N configuration and session status |
 | GET | `/t3/contract` | Trust-anchor contract metadata and snapshot invocation |
+| GET | `/passport/current` | Current Agent Passport or not-generated hint |
+| POST | `/passport/generate` | Generate `artifacts/agent-passport.json` and return it |
 
-See `docs/curl-smoke-test.md` for curl examples.
+See `docs/curl-smoke-test.md` and `docs/agent-passport.md` for curl examples.
 
 ## Tests
 

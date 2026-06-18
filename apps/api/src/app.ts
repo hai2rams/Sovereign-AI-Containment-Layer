@@ -1,13 +1,22 @@
 import express, { type Express } from 'express';
 import {
+  generateAgentPassport,
+  readAgentPassport,
+} from '@sovereign/agent-passport';
+import {
   executeContract,
   getT3Session,
   isT3Configured,
   loadT3Config,
 } from '@sovereign/t3-adapter';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const repoRoot = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../..');
 
 export function createApp(): Express {
   const app = express();
+  app.use(express.json());
 
   app.get('/health', (_req, res) => {
     res.status(200).json({
@@ -107,6 +116,35 @@ export function createApp(): Express {
         invocation: null,
         message,
       });
+    }
+  });
+
+  app.get('/passport/current', async (_req, res) => {
+    try {
+      const passport = await readAgentPassport(repoRoot);
+      if (!passport) {
+        res.status(200).json({
+          available: false,
+          reason: 'passport_not_generated',
+          hint: 'Run generate-passport or POST /passport/generate',
+        });
+        return;
+      }
+
+      res.status(200).json(passport);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown passport read error';
+      res.status(500).json({ error: 'PassportReadFailed', message });
+    }
+  });
+
+  app.post('/passport/generate', async (_req, res) => {
+    try {
+      const passport = await generateAgentPassport({ repoRoot });
+      res.status(200).json(passport);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown passport generation error';
+      res.status(500).json({ error: 'PassportGenerateFailed', message });
     }
   });
 
