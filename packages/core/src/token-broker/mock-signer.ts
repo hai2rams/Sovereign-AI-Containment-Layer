@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { AsciiSlug } from '../types/brands.js';
 import { stableStringify } from '../telemetry/types.js';
-import type { UnsignedParameterBoundActionToken } from './types.js';
+import type { UnsignedParameterBoundActionToken, ParameterBoundActionToken } from './types.js';
 
 /** Prefix labels mock signatures — not cryptographic proof. Real asymmetric signing comes later. */
 export const MOCK_SIGNATURE_PREFIX = 'mock_sig_v1:' as const;
@@ -31,4 +31,13 @@ export class MockTokenSigner implements TokenSigner {
 
 export function isMockSignature(signature: string): boolean {
   return signature.startsWith(MOCK_SIGNATURE_PREFIX);
+}
+
+export function verifyMockTokenSignature(token: ParameterBoundActionToken): boolean {
+  if (!isMockSignature(token.signature)) {
+    return false;
+  }
+  const { signature: _ignored, ...unsigned } = token;
+  const signer = new MockTokenSigner(token.signing_key_id);
+  return signer.sign(unsigned) === token.signature;
 }

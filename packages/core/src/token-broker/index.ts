@@ -28,7 +28,7 @@ export {
   type ApprovedExecutionParameters,
 } from './parameter-canonicalizer.js';
 export { computeParameterHash, tryComputeParameterHash } from './parameter-hash.js';
-export { MockTokenSigner, MOCK_SIGNATURE_PREFIX, isMockSignature, type TokenSigner } from './mock-signer.js';
+export { MockTokenSigner, MOCK_SIGNATURE_PREFIX, isMockSignature, verifyMockTokenSignature, type TokenSigner } from './mock-signer.js';
 export { generateJti, resetJtiSequenceForTests } from './jti.js';
 export { generateIdempotencyKey, type IdempotencyKeyInput } from './idempotency-key.js';
 export {

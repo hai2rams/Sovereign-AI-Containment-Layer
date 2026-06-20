@@ -53,4 +53,4 @@ The Streamlit dashboard is a **read-mostly control plane**. It must not weaken c
 - **Model cannot authorize or mint tokens** — JTI and idempotency key are control-plane generated; forbidden fields rejected at intake.
 - **Mock signing in M5** — `MockTokenSigner` with `mock_sig_v1:` prefix; no real private keys.
 - **Real asymmetric key rotation** comes in a later milestone.
-- **Full Tool Executor verification** is M6 — token verification API not wired yet.
+- **Full Tool Executor verification** is implemented in M6 — `verifyToolExecution` in `packages/core/src/tool-executor`.

@@ -1,4 +1,4 @@
-# Demo Playbook (M0 placeholder)
+# Demo Playbook
 
 ## Scenarios (`demo/scenarios/`)
 
@@ -11,9 +11,15 @@
 | `revocation-race.json` | Revocation vs in-flight action |
 | `telemetry-spoofing.json` | Invalid / replayed telemetry |
 
-## M0
+## M6 — parameter swap containment proof
 
-Fixtures describe scenario metadata only. `demo/expected/` and `demo/replays/` hold placeholders for future golden outputs.
+The Tool Executor **independently verifies** that an execution payload matches the parameter-bound token. Token Broker approval alone is not sufficient.
+
+**Attack pattern:** token issued for `approved_vendor_001`, execution payload swaps `destination` to `attacker_account`.
+
+**Expected outcome:** `decision: blocked`, `reason_codes: [PARAMETER_HASH_MISMATCH]`, no downstream tool call, no transaction.
+
+Covered by `packages/core/tests/tool-executor/tool-executor-verifier.test.ts` (parameter swap test).
 
 ## Commands (future)
 
@@ -23,4 +29,4 @@ npx tsx scripts/reset-demo.ts
 npx tsx scripts/export-trace.ts
 ```
 
-M0: scripts exit 0 with stub messages only.
+Scripts remain stubs until demo wiring milestones.

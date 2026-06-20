@@ -153,7 +153,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
 | Parameter hash | Token bound to proposal digest | M5 | Complete | `parameter-hash.test.ts`, `parameter-canonicalizer.test.ts` | Local canonicalizer (not full JCS) |
-| Single-use token | JTI / consumption tracking | M5, M6 | Partial | `jti.test.ts`, `token-broker.test.ts` | Verification in M6 |
+| Single-use token | JTI / consumption tracking | M5, M6 | Complete | `jti.test.ts`, `replay-verifier.test.ts` | Set-based replay check |
 | Short TTL | Expiring capability | M5 | Complete | `token-broker.test.ts` | Default 5 min TTL |
 | Signed capability | HMAC or asymmetric sign | M5 | Partial | `mock-signer.test.ts` | Mock signing only in M5 |
 | No token if policy blocks | Issuance gated on semantic `allowed` | M5 | Complete | `token-policy-gate.test.ts`, `token-broker.test.ts` | Model cannot mint tokens |
@@ -195,15 +195,16 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Independent verification | Executor separate from model path | M6 | Planned | — | |
-| Signature check | Token/signature validation | M6 | Planned | — | |
-| Parameter hash match | Proposal drift detection | M6 | Planned | — | Judge: parameter swap |
-| Revocation epoch | Check against envelope | M6, M9 | Planned | — | |
-| Containment epoch | Session epoch match | M6, M9 | Planned | — | |
-| Key epoch | Signing epoch match | M6, M12 | Planned | — | |
-| Idempotency | `idempotency_key` enforcement | M6 | Planned | — | In envelope schema |
-| JTI | Single-use token ID | M5, M6 | Planned | — | |
-| Freshness | TTL / tick window | M6 | Planned | — | |
+| Independent verification | Executor separate from model path | M6 | Complete | `tool-executor-verifier.test.ts` | No downstream tool calls |
+| Signature check | Token/signature validation | M6 | Complete | `token-verifier.test.ts` | Mock signature only |
+| Parameter hash match | Proposal drift detection | M6 | Complete | `parameter-verifier.test.ts`, swap test | Judge: parameter swap |
+| Revocation epoch | Check against envelope | M6, M9 | Complete | `epoch-verifier.test.ts` | |
+| Containment epoch | Session epoch match | M6, M9 | Complete | `epoch-verifier.test.ts` | |
+| Key epoch | Signing epoch match | M6, M12 | Complete | `epoch-verifier.test.ts` | |
+| Idempotency | `idempotency_key` enforcement | M6 | Complete | `replay-verifier.test.ts` | Placeholder set check |
+| JTI | Single-use token ID | M5, M6 | Complete | `replay-verifier.test.ts` | Placeholder set check |
+| Freshness | TTL / tick window | M6 | Complete | `token-verifier.test.ts` | `expires_at` check |
+| No real execution | `downstream_tool_called: false` | M6 | Complete | `tool-executor-verifier.test.ts` | Always false in M6 |
 
 **Scope:** Full Product · Parameter swap scenario is **Presentation Slice**
 
@@ -255,7 +256,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
 | Poisoned invoice | Semantic block demonstration | M2, M10 | Partial | `semantic-policy-engine.test.ts`, fixtures | **Presentation Slice** + full harness M10 |
-| Parameter swap | Executor verification failure | M6, M10 | Planned | `demo/scenarios/parameter-swap.json` | **Presentation Slice** |
+| Parameter swap | Executor verification failure | M6, M10 | Partial | `tool-executor-verifier.test.ts`, `demo/scenarios/parameter-swap.json` | **Presentation Slice** |
 | Memory poisoning | Memory firewall containment | M7, M10 | Planned | `demo/scenarios/memory-poisoning.json` | **Presentation Slice** |
 | Duplicate JSON key | Strict JSON rejection | M1, M10 | Complete | `strict-json-intake.test.ts` | Full + demo |
 | Revocation race | Epoch race handling | M9, M10 | Planned | `demo/scenarios/revocation-race.json` | Optional **Presentation Slice** |
@@ -304,7 +305,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M3 | Advisory classifier (deferred), telemetry, audit foundation | Complete (foundation) |
 | M4 | T3 adapter anchoring | Planned |
 | M5 | Token broker | Complete |
-| M6 | Tool executor verification | Planned |
+| M6 | Tool executor verification | Complete |
 | M7 | Memory firewall | Planned |
 | M8 | Egress firewall | Planned |
 | M9 | Revocation, quarantine, heartbeat | Planned |

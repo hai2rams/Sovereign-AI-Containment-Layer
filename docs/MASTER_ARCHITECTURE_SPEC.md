@@ -1,6 +1,6 @@
 # Master Architecture Specification
 
-> **Status:** M5 — parameter-bound token broker foundation; T3 adapter anchoring boundary (M4) complete.
+> **Status:** M6 — tool executor verification foundation; parameter-bound token broker (M5) complete.
 
 ## Thesis
 
@@ -10,7 +10,7 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 
 | Layer | Package / path | Status |
 |-------|----------------|--------|
-| Domain core | `packages/core` | M1–M5 (policy, telemetry, audit, token broker) |
+| Domain core | `packages/core` | M1–M6 (policy, telemetry, audit, token broker, tool executor verify) |
 | Trust anchor port | `packages/t3-adapter` | M4 anchoring boundary |
 | Control plane UI | `dashboard/` | Streamlit shell (read-only) |
 | Demo & replay | `demo/` | Scenario fixtures |
@@ -27,6 +27,9 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 - **Token Broker** (`packages/core/src/token-broker`) issues parameter-bound capabilities after semantic `allowed` only.
 - **Model cannot mint tokens** — JTI, idempotency key, and signing are control-plane only.
 - **M5 uses mock signing** (`mock_sig_v1:`); real asymmetric signing deferred.
+- **Tool Executor** (`packages/core/src/tool-executor`) independently verifies token + execution payload before any tool call.
+- **Token Broker approval alone is not enough** — parameter hash must match at execution time.
+- **M6 performs verification only** — `downstream_tool_called` and `transaction_executed` always `false`.
 - No payment execution or ungated production T3 writes.
 
 ## Prototype reference

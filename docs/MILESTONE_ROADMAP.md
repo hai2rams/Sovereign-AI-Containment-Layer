@@ -23,7 +23,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M3** | Telemetry and audit pipeline | Complete |
 | **M4** | T3 adapter anchoring | Complete |
 | **M5** | Parameter-bound token broker | Complete |
-| **M6** | Tool executor verification | Planned |
+| **M6** | Tool executor verification | Complete |
 | **M7** | Memory firewall | Planned |
 | **M8** | Output / egress firewall | Planned |
 | **M9** | Revocation and quarantine engine | Planned |
@@ -88,14 +88,20 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 - [x] `MockTokenSigner` — deterministic mock signatures (no real keys)
 - [x] Control-plane-only `generateJti` and `generateIdempotencyKey`
 - [x] `TOKEN_ISSUANCE_DECISION` telemetry payloads (safe fields only)
-- [ ] Token verification API for tool executor gate (M6)
+- [x] Token verification consumed by Tool Executor (M6)
 - [ ] Real asymmetric signing and key rotation (later milestone)
 
 ### M6 — Tool executor verification
 
-- [ ] Verify action token + proposal hash + envelope epoch before execution
-- [ ] Reject stale tokens, wrong destination, amount drift
-- [ ] Read-only executor shell in dashboard; no live payment in dev without explicit flag
+- [x] `verifyToolExecution` — independent token + payload verification
+- [x] Mock signature validation, parameter hash recomputation, epoch matching
+- [x] JTI and idempotency key replay placeholders (`used_jtis` / `used_idempotency_keys`)
+- [x] Risk mode gate (`quarantine`, `read_only` block state-changing actions)
+- [x] Token expiry (TTL) check
+- [x] `TOOL_EXECUTOR_VERIFICATION_COMPLETED` telemetry (safe fields only)
+- [x] Parameter swap attack blocked (`PARAMETER_HASH_MISMATCH`)
+- [ ] Dashboard executor shell wiring (M11)
+- [ ] Real downstream tool invocation (later milestone)
 
 ### M7 — Memory firewall
 
