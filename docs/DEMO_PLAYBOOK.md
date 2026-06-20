@@ -21,6 +21,16 @@ The Tool Executor **independently verifies** that an execution payload matches t
 
 Covered by `packages/core/tests/tool-executor/tool-executor-verifier.test.ts` (parameter swap test).
 
+## M7 — memory poisoning containment
+
+Memory writes pass through `evaluateMemoryWrite` in `packages/core/src/memory-firewall`:
+
+- Non-inert payloads (e.g. embedded scripts) are **blocked** with `MEMORY_PAYLOAD_NOT_INERT`.
+- Duplicate and normalized-similar payloads are **blocked** (`DUPLICATE_PAYLOAD_DETECTED`, `SIMILAR_PAYLOAD_DETECTED`).
+- Quota exceeded recommends quarantine escalation.
+
+Covered by `packages/core/tests/memory-firewall/memory-firewall.test.ts`.
+
 ## Commands (future)
 
 ```bash

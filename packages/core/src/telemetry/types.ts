@@ -20,6 +20,7 @@ export const TELEMETRY_EVENT_TYPES = [
   'T3_ANCHOR_ATTEMPTED',
   'T3_ANCHOR_CONFIRMED',
   'T3_ANCHOR_FAILED',
+  'MEMORY_FIREWALL_DECISION',
 ] as const;
 
 export type TelemetryEventType = (typeof TELEMETRY_EVENT_TYPES)[number];

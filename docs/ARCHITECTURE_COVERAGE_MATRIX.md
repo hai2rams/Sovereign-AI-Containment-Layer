@@ -214,12 +214,12 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Memory write validation | Quota counters enforced | M7 | Planned | `MemoryQuotaState` in schema | |
-| Strict metadata schema | Typed memory metadata | M7 | Planned | — | |
-| Inert evidence payload | No executable content in memory store | M7 | Planned | — | |
-| Memory read revalidation | Re-check trust on read | M7 | Planned | — | |
-| Trust depreciation | Decay on suspicious reads | M7 | Planned | — | |
-| Quota and similarity throttling | Similarity violation counters | M7 | Planned | — | Fields in envelope |
+| Memory write validation | Quota counters enforced | M7 | Complete | `quota-enforcer.test.ts`, `memory-firewall.test.ts` | |
+| Strict metadata schema | Typed memory metadata | M7 | Complete | `memory-metadata.test.ts` | |
+| Inert evidence payload | No executable content in memory store | M7 | Complete | `inert-payload.test.ts` | Pattern-based M7 |
+| Memory read revalidation | Re-check trust on read | M7 | Complete | `memory-firewall.test.ts` | |
+| Trust depreciation | Decay on suspicious reads | M7 | Complete | `memory-firewall.test.ts` | Blocks read when evidence trust worse |
+| Quota and similarity throttling | Similarity violation counters | M7 | Complete | `similarity-detector.test.ts` | Duplicate + normalized similarity |
 
 **Scope:** Full Product · Memory poisoning replay is **Presentation Slice**
 
@@ -257,7 +257,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
 | Poisoned invoice | Semantic block demonstration | M2, M10 | Partial | `semantic-policy-engine.test.ts`, fixtures | **Presentation Slice** + full harness M10 |
 | Parameter swap | Executor verification failure | M6, M10 | Partial | `tool-executor-verifier.test.ts`, `demo/scenarios/parameter-swap.json` | **Presentation Slice** |
-| Memory poisoning | Memory firewall containment | M7, M10 | Planned | `demo/scenarios/memory-poisoning.json` | **Presentation Slice** |
+| Memory poisoning | Memory firewall containment | M7, M10 | Partial | `memory-firewall.test.ts`, `demo/scenarios/memory-poisoning.json` | **Presentation Slice** |
 | Duplicate JSON key | Strict JSON rejection | M1, M10 | Complete | `strict-json-intake.test.ts` | Full + demo |
 | Revocation race | Epoch race handling | M9, M10 | Planned | `demo/scenarios/revocation-race.json` | Optional **Presentation Slice** |
 | Heartbeat replay | Nonce replay rejection | M9, M10 | Planned | — | Full product |
@@ -306,7 +306,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M4 | T3 adapter anchoring | Planned |
 | M5 | Token broker | Complete |
 | M6 | Tool executor verification | Complete |
-| M7 | Memory firewall | Planned |
+| M7 | Memory firewall | Complete |
 | M8 | Egress firewall | Planned |
 | M9 | Revocation, quarantine, heartbeat | Planned |
 | M10 | Red-team scenario engine | Planned |

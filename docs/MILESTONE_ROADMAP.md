@@ -24,7 +24,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M4** | T3 adapter anchoring | Complete |
 | **M5** | Parameter-bound token broker | Complete |
 | **M6** | Tool executor verification | Complete |
-| **M7** | Memory firewall | Planned |
+| **M7** | Memory firewall | Complete |
 | **M8** | Output / egress firewall | Planned |
 | **M9** | Revocation and quarantine engine | Planned |
 | **M10** | Red-team scenario engine | Planned |
@@ -105,9 +105,14 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M7 — Memory firewall
 
-- [ ] Enforce `MemoryQuotaState` limits from StateEnvelope
-- [ ] Similarity / duplicate payload detection hooks
-- [ ] Block or quarantine on quota exceeded
+- [x] `MemoryEvidenceMetadata` strict schema with forbidden control-plane field rejection
+- [x] Inert evidence payload validation (blocks executable patterns)
+- [x] `MemoryQuotaState` quota enforcement hooks
+- [x] Duplicate and normalized-similarity payload detection
+- [x] Memory read trust revalidation and depreciation blocking
+- [x] Risk mode gate for memory writes (`quarantine`, `read_only`, `revoked`)
+- [x] `MEMORY_FIREWALL_DECISION` telemetry (safe fields only; no raw payload)
+- [ ] Persistent memory store (later milestone — M7 verifies only; `payload_stored: false`)
 
 ### M8 — Output / egress firewall
 

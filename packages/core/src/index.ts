@@ -135,3 +135,24 @@ export {
   assertToolExecutorVerificationTelemetrySafe,
   type ToolExecutorVerificationTelemetryPayload,
 } from './tool-executor/index.js';
+
+export {
+  type MemoryFirewallDecision,
+  type MemoryFirewallBlockedReason,
+  type MemoryEvidenceMetadata,
+  type MemoryFirewallPolicy,
+  type MemoryWriteRequest,
+  type MemoryWriteResult,
+  type MemoryReadRequest,
+  type MemoryReadResult,
+  MEMORY_FIREWALL_BLOCKED_REASONS,
+  DEFAULT_MEMORY_FIREWALL_POLICY,
+  validateMemoryEvidenceMetadata,
+  isInertEvidencePayload,
+  evaluateMemoryWrite,
+  evaluateMemoryRead,
+  buildMemoryWriteTelemetryPayload,
+  buildMemoryReadTelemetryPayload,
+  assertMemoryFirewallTelemetrySafe,
+  type MemoryFirewallTelemetryPayload,
+} from './memory-firewall/index.js';

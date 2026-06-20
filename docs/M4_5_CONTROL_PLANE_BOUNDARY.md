@@ -54,3 +54,12 @@ The Streamlit dashboard is a **read-mostly control plane**. It must not weaken c
 - **Mock signing in M5** — `MockTokenSigner` with `mock_sig_v1:` prefix; no real private keys.
 - **Real asymmetric key rotation** comes in a later milestone.
 - **Full Tool Executor verification** is implemented in M6 — `verifyToolExecution` in `packages/core/src/tool-executor`.
+
+## M7 implementation notes
+
+- **Memory Firewall** gates memory writes and reads before any store access.
+- **Inert evidence only** — executable patterns (`<script>`, `eval(`, etc.) are rejected.
+- **Quota enforcement** uses `MemoryQuotaState` counters from `StateEnvelope`.
+- **Similarity hooks** detect duplicate hashes and normalized-similar payloads (memory poisoning defense).
+- **Read trust revalidation** blocks reads when stored evidence trust is worse than session trust.
+- **M7 does not persist memory** — `payload_stored` and `payload_returned` remain `false`.
