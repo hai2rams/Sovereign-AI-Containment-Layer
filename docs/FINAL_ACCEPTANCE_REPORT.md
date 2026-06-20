@@ -110,6 +110,18 @@ These are production-hardening items explicitly out of scope for this foundation
 
 ---
 
+## Dashboard presentation enhancement
+
+Post-M13, the Streamlit dashboard includes a **graphical workflow trace** driven by telemetry replays in `demo/replays/`. This is a **read-only presentation layer** — it does not enforce policy or execute tools.
+
+| Feature | Path |
+|---------|------|
+| Workflow graph | `dashboard/components/workflow_graph.py` |
+| Scenario replays | `demo/replays/*.json` |
+| Presentation tests | `tests/dashboard/test_workflow_graph.py` |
+
+---
+
 ## Operator commands
 
 ```bash

@@ -5,9 +5,10 @@ import streamlit as st
 from services.telemetry_reader import latest_control_plane_snapshot
 
 
-def render_semantic_rules_panel() -> None:
+def render_semantic_rules_panel(snapshot: dict | None = None) -> None:
     st.subheader("Semantic rules")
-    snapshot = latest_control_plane_snapshot()
+    if snapshot is None:
+        snapshot = latest_control_plane_snapshot()
     semantic = snapshot.get("semantic")
 
     if not semantic:

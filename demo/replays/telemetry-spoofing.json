@@ -1,0 +1,75 @@
+{
+  "scenario_id": "telemetry-spoofing",
+  "title": "Telemetry Spoofing",
+  "events": [
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-001",
+      "event_type": "SESSION_STARTED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:01.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "event_sequence": 1,
+      "event_hash": "replay-hash-001",
+      "previous_event_hash": null,
+      "payload": {
+        "risk_mode": "normal"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-002",
+      "event_type": "INPUT_SOURCE_CLASSIFIED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:02.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-2",
+      "parent_span_id": null,
+      "event_sequence": 2,
+      "event_hash": "replay-hash-002",
+      "previous_event_hash": "replay-hash-001",
+      "payload": {
+        "source_trust_level": 1,
+        "classification": "certified_input"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-003",
+      "event_type": "SANITIZED_TASK_PACKET_CREATED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:03.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-3",
+      "parent_span_id": null,
+      "event_sequence": 3,
+      "event_hash": "replay-hash-003",
+      "previous_event_hash": "replay-hash-002",
+      "payload": {
+        "output_contract_id": "ACTION_PROPOSAL_V1"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-004",
+      "event_type": "SEMANTIC_VALIDATION_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:04.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-4",
+      "parent_span_id": null,
+      "event_sequence": 4,
+      "event_hash": "replay-hash-004",
+      "previous_event_hash": "deadbeef",
+      "payload": {
+        "final_semantic_result": "allowed"
+      }
+    }
+  ]
+}

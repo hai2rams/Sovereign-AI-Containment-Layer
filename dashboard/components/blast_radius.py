@@ -5,9 +5,10 @@ import streamlit as st
 from services.telemetry_reader import latest_control_plane_snapshot
 
 
-def render_blast_radius() -> None:
+def render_blast_radius(snapshot: dict | None = None) -> None:
     st.subheader("Blast radius")
-    snapshot = latest_control_plane_snapshot()
+    if snapshot is None:
+        snapshot = latest_control_plane_snapshot()
     blast = snapshot.get("blast_radius", {})
     status = blast.get("containment_status", "unknown")
     layers = blast.get("layers_active", [])

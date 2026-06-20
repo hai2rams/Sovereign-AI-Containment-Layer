@@ -1,0 +1,129 @@
+{
+  "scenario_id": "memory-poisoning",
+  "title": "Memory Poisoning",
+  "events": [
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-001",
+      "event_type": "SESSION_STARTED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:01.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "event_sequence": 1,
+      "event_hash": "replay-hash-001",
+      "previous_event_hash": null,
+      "payload": {}
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-002",
+      "event_type": "INPUT_SOURCE_CLASSIFIED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:02.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-2",
+      "parent_span_id": null,
+      "event_sequence": 2,
+      "event_hash": "replay-hash-002",
+      "previous_event_hash": "replay-hash-001",
+      "payload": {
+        "source_trust_level": 2
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-003",
+      "event_type": "SANITIZED_TASK_PACKET_CREATED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:03.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-3",
+      "parent_span_id": null,
+      "event_sequence": 3,
+      "event_hash": "replay-hash-003",
+      "previous_event_hash": "replay-hash-002",
+      "payload": {}
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-004",
+      "event_type": "INFERENCE_PROPOSAL_INGESTED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:04.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-4",
+      "parent_span_id": null,
+      "event_sequence": 4,
+      "event_hash": "replay-hash-004",
+      "previous_event_hash": "replay-hash-003",
+      "payload": {
+        "action": "memory.write",
+        "preview_hash": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "untrusted": true
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-005",
+      "event_type": "STRICT_JSON_INTAKE_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:05.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-5",
+      "parent_span_id": null,
+      "event_sequence": 5,
+      "event_hash": "replay-hash-005",
+      "previous_event_hash": "replay-hash-004",
+      "payload": {
+        "decision": "passed"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-006",
+      "event_type": "STRUCTURAL_VALIDATION_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:06.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-6",
+      "parent_span_id": null,
+      "event_sequence": 6,
+      "event_hash": "replay-hash-006",
+      "previous_event_hash": "replay-hash-005",
+      "payload": {
+        "decision": "passed"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-007",
+      "event_type": "MEMORY_FIREWALL_DECISION",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:07.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-7",
+      "parent_span_id": null,
+      "event_sequence": 7,
+      "event_hash": "replay-hash-007",
+      "previous_event_hash": "replay-hash-006",
+      "payload": {
+        "memory_firewall": {
+          "decision": "blocked",
+          "reason_codes": [
+            "MEMORY_PAYLOAD_NOT_INERT"
+          ],
+          "quarantine_recommended": true
+        }
+      }
+    }
+  ]
+}

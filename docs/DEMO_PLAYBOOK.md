@@ -44,13 +44,21 @@ npm run demo -- --scenario=poisoned-invoice --compare-expected
 npm run demo:all
 ```
 
-## Dashboard walkthrough
+## Dashboard walkthrough (graphical workflow trace)
 
 ```bash
 streamlit run dashboard/app.py
 ```
 
-Panels derive state from `telemetry.v1` JSONL — semantic, tokens, tool executor, audit, blast radius, anchored roots.
+The dashboard includes a **telemetry-driven Graphviz workflow graph** (`dashboard/components/workflow_graph.py`):
+
+- Sidebar scenario selector replays traces from `demo/replays/`
+- Nodes color by telemetry status (passed / blocked / skipped / pending)
+- Three visual zones: **Untrusted Model Space**, **Trusted Control Plane**, **External / Anchoring Layer**
+- Split narrative columns show model attempt vs control-plane decision
+- **Read-only** — no real payment or tool execution; presentation only, not enforcement
+
+Buttons: **Run Demo Replay**, **Reset View**, **Export Current Trace** (JSON download).
 
 ## Scenario coverage
 

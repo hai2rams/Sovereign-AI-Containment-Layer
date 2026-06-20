@@ -5,9 +5,10 @@ import streamlit as st
 from services.telemetry_reader import latest_control_plane_snapshot
 
 
-def render_tool_executor_panel() -> None:
+def render_tool_executor_panel(snapshot: dict | None = None) -> None:
     st.subheader("Tool executor")
-    snapshot = latest_control_plane_snapshot()
+    if snapshot is None:
+        snapshot = latest_control_plane_snapshot()
     tool_executor = snapshot.get("tool_executor")
 
     st.warning("Execution disabled — control plane is read-only.")

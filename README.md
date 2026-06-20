@@ -13,15 +13,18 @@ See **`docs/MILESTONE_ROADMAP.md`** for the complete implementation roadmap (M0�
 1. Model receives only a **sanitized task packet** — never private `StateEnvelope` fields.
 2. Model emits only a structural **ActionProposal**.
 3. **Deterministic semantic policy** decides if the action is meaningfully allowed — no LLM approval.
-4. Future layers add tokens, tool verification, memory/egress firewalls, T3 anchoring, and revocation.
+4. Tokens, tool verification, memory/egress firewalls, T3 anchoring, and revocation complete the control plane.
 
-**Current progress:** M0–M2 complete on `clean-main` (boundary validators + semantic policy engine).
+**Current progress:** M0–M13 complete on `clean-main` (full containment architecture foundation).
 
 ## Quick start
 
 ```bash
 npm install && npm run build && npm test
+npm run ci
 ```
+
+## Dashboard (graphical workflow trace)
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r dashboard/requirements.txt
@@ -29,13 +32,16 @@ python3 -m venv .venv && .venv/bin/pip install -r dashboard/requirements.txt
 streamlit run dashboard/app.py
 ```
 
+The dashboard includes a **telemetry-driven Graphviz workflow graph** (read-only presentation). Use the sidebar scenario selector to replay judge demo traces from `demo/replays/`. The graph visualizes untrusted model space vs trusted control plane — it does **not** enforce policy.
+
 ## Layout
 
 ```text
 packages/core/        Containment domain (no direct T3 contract deps)
 packages/t3-adapter/  Trust-anchor adapter boundary
-dashboard/            Streamlit control plane (read-mostly)
+dashboard/            Streamlit control plane (read-only presentation)
 demo/scenarios/       Scenario fixtures (judge + full red-team)
+demo/replays/         Dashboard telemetry replays
 docs/                 Architecture specs and full roadmap
 ```
 
@@ -51,3 +57,4 @@ docs/                 Architecture specs and full roadmap
 
 - No secrets committed · No production T3 writes without review · No payment execution in skeleton paths
 - `packages/core` never imports T3 contract code directly
+- Dashboard is read-only — graphical workflow is presentation only

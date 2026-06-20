@@ -5,8 +5,9 @@ import streamlit as st
 from services.telemetry_reader import latest_control_plane_snapshot
 
 
-def render_header_matrix() -> None:
-    snapshot = latest_control_plane_snapshot()
+def render_header_matrix(snapshot: dict | None = None) -> None:
+    if snapshot is None:
+        snapshot = latest_control_plane_snapshot()
     roots = snapshot["roots"]
     risk_mode = snapshot.get("risk_mode", "normal")
 

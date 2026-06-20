@@ -5,9 +5,10 @@ import streamlit as st
 from services.telemetry_reader import latest_control_plane_snapshot
 
 
-def render_audit_panel() -> None:
+def render_audit_panel(snapshot: dict | None = None) -> None:
     st.subheader("Audit")
-    snapshot = latest_control_plane_snapshot()
+    if snapshot is None:
+        snapshot = latest_control_plane_snapshot()
     audit = snapshot.get("audit")
 
     if not audit:

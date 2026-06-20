@@ -5,9 +5,10 @@ import streamlit as st
 from services.telemetry_reader import latest_control_plane_snapshot
 
 
-def render_timeline(events: list[dict]) -> None:
+def render_timeline(events: list[dict], snapshot: dict | None = None) -> None:
     st.subheader("Timeline")
-    snapshot = latest_control_plane_snapshot()
+    if snapshot is None:
+        snapshot = latest_control_plane_snapshot()
     timeline = snapshot.get("timeline") or []
 
     if not timeline and not events:

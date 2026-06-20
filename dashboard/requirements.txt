@@ -1,2 +1,3 @@
 streamlit>=1.32.0
 pytest>=8.0.0
+# Graphviz system binary required for st.graphviz_chart (brew install graphviz / apt install graphviz)

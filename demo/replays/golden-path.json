@@ -1,0 +1,253 @@
+{
+  "scenario_id": "golden-path",
+  "title": "Golden Path",
+  "events": [
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-001",
+      "event_type": "SESSION_STARTED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:01.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "event_sequence": 1,
+      "event_hash": "replay-hash-001",
+      "previous_event_hash": null,
+      "payload": {
+        "risk_mode": "normal"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-002",
+      "event_type": "INPUT_SOURCE_CLASSIFIED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:02.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-2",
+      "parent_span_id": null,
+      "event_sequence": 2,
+      "event_hash": "replay-hash-002",
+      "previous_event_hash": "replay-hash-001",
+      "payload": {
+        "source_trust_level": 1,
+        "classification": "certified_input"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-003",
+      "event_type": "SANITIZED_TASK_PACKET_CREATED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:03.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-3",
+      "parent_span_id": null,
+      "event_sequence": 3,
+      "event_hash": "replay-hash-003",
+      "previous_event_hash": "replay-hash-002",
+      "payload": {
+        "output_contract_id": "ACTION_PROPOSAL_V1"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-004",
+      "event_type": "INFERENCE_PROPOSAL_INGESTED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:04.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-4",
+      "parent_span_id": null,
+      "event_sequence": 4,
+      "event_hash": "replay-hash-004",
+      "previous_event_hash": "replay-hash-003",
+      "payload": {
+        "action": "payment.transfer",
+        "amount_minor_units": 100000,
+        "destination": "approved-vendor-001",
+        "preview_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "untrusted": true
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-005",
+      "event_type": "STRICT_JSON_INTAKE_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:05.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-5",
+      "parent_span_id": null,
+      "event_sequence": 5,
+      "event_hash": "replay-hash-005",
+      "previous_event_hash": "replay-hash-004",
+      "payload": {
+        "decision": "passed",
+        "duplicate_keys_rejected": true
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-006",
+      "event_type": "STRUCTURAL_VALIDATION_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:06.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-6",
+      "parent_span_id": null,
+      "event_sequence": 6,
+      "event_hash": "replay-hash-006",
+      "previous_event_hash": "replay-hash-005",
+      "payload": {
+        "decision": "passed",
+        "schema": "ActionProposal"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-007",
+      "event_type": "SEMANTIC_VALIDATION_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:07.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-7",
+      "parent_span_id": null,
+      "event_sequence": 7,
+      "event_hash": "replay-hash-007",
+      "previous_event_hash": "replay-hash-006",
+      "payload": {
+        "engine": "deterministic_semantic_rules_v1",
+        "accepted": true,
+        "final_semantic_result": "allowed",
+        "reason_codes": []
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-008",
+      "event_type": "POLICY_DECISION_ISSUED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:08.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-8",
+      "parent_span_id": null,
+      "event_sequence": 8,
+      "event_hash": "replay-hash-008",
+      "previous_event_hash": "replay-hash-007",
+      "payload": {
+        "policy_decision": "allow"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-009",
+      "event_type": "TOKEN_ISSUANCE_DECISION",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:09.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-9",
+      "parent_span_id": null,
+      "event_sequence": 9,
+      "event_hash": "replay-hash-009",
+      "previous_event_hash": "replay-hash-008",
+      "payload": {
+        "token_broker": {
+          "token_issued": true,
+          "parameter_hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "signing_key_id": "session_key_001",
+          "single_use": true
+        }
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-010",
+      "event_type": "TOOL_EXECUTOR_VERIFICATION_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:10.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-10",
+      "parent_span_id": null,
+      "event_sequence": 10,
+      "event_hash": "replay-hash-010",
+      "previous_event_hash": "replay-hash-009",
+      "payload": {
+        "tool_executor_verification": {
+          "verification_result": "allowed",
+          "downstream_tool_called": false,
+          "transaction_executed": false
+        }
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-011",
+      "event_type": "EGRESS_CONTRACTION_APPLIED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:11.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-11",
+      "parent_span_id": null,
+      "event_sequence": 11,
+      "event_hash": "replay-hash-011",
+      "previous_event_hash": "replay-hash-010",
+      "payload": {
+        "egress_firewall": {
+          "decision": "allowed",
+          "egress_transmitted": false
+        }
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-012",
+      "event_type": "AUDIT_RECEIPT_WRITTEN",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:12.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-12",
+      "parent_span_id": null,
+      "event_sequence": 12,
+      "event_hash": "replay-hash-012",
+      "previous_event_hash": "replay-hash-011",
+      "payload": {
+        "entry_count": 1,
+        "audit_state_root": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "replay-evt-013",
+      "event_type": "T3_ANCHOR_CONFIRMED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:13.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-replay",
+      "span_id": "span-13",
+      "parent_span_id": null,
+      "event_sequence": 13,
+      "event_hash": "replay-hash-013",
+      "previous_event_hash": "replay-hash-012",
+      "payload": {
+        "anchor_type": "audit",
+        "root_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "mode": "dry_run",
+        "status": "confirmed"
+      }
+    }
+  ]
+}

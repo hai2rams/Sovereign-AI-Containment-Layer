@@ -10,13 +10,13 @@ from components.token_panel import render_token_panel
 from components.tool_executor_panel import render_tool_executor_panel
 
 
-def render_split_panels(telemetry_events: list[dict]) -> None:
+def render_split_panels(telemetry_events: list[dict], snapshot: dict | None = None) -> None:
     left, right = st.columns(2)
     with left:
-        render_timeline(telemetry_events)
-        render_semantic_rules_panel()
-        render_token_panel()
+        render_timeline(telemetry_events, snapshot)
+        render_semantic_rules_panel(snapshot)
+        render_token_panel(snapshot)
     with right:
-        render_tool_executor_panel()
-        render_audit_panel()
-        render_blast_radius()
+        render_tool_executor_panel(snapshot)
+        render_audit_panel(snapshot)
+        render_blast_radius(snapshot)
