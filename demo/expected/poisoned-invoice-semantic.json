@@ -1,0 +1,14 @@
+{
+  "scenario_id": "poisoned-invoice",
+  "semantic_validation": {
+    "accepted": false,
+    "engine": "deterministic_semantic_rules_v1",
+    "final_semantic_result": "blocked",
+    "policy_decision": "deny",
+    "required_reason_codes": [
+      "DESTINATION_NOT_ALLOWLISTED",
+      "AMOUNT_EXCEEDS_LIMIT",
+      "LOW_SOURCE_TRUST_FOR_STATE_CHANGE"
+    ]
+  }
+}

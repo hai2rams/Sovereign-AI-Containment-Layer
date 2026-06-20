@@ -1,1 +1,23 @@
-{"id":"golden-path","title":"Golden path","status":"m0-placeholder","description":"Certified release, policy allow, clean audit trail."}
+{
+  "id": "golden-path",
+  "title": "Golden path",
+  "status": "m2-ready",
+  "description": "Certified release, allowlisted vendor, bound invoice, low source trust.",
+  "proposal": {
+    "action": "payment.transfer",
+    "amount_minor_units": 100000,
+    "currency": "USD",
+    "destination": "approved-vendor-001",
+    "reason_code": "invoice-123",
+    "payment_reference": "invoice-123"
+  },
+  "envelope": {
+    "source_trust_level": 1,
+    "user_role": "finance-operator",
+    "risk_mode": "normal",
+    "release_status": "certified",
+    "revocation_status": "active",
+    "attestation_id": "attest-001"
+  },
+  "policy_ref": "default-payment-policy-v1"
+}

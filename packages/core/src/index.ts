@@ -34,5 +34,17 @@ export {
   type StrictJsonIntakeOptions,
 } from './strict-json/index.js';
 
+export {
+  type SemanticRuleEvaluation,
+  type SemanticValidationResult,
+  type PaymentPolicyContext,
+  type SemanticPolicyInput,
+  type FinalSemanticResult,
+  SemanticPolicyEngine,
+  evaluateSemanticPolicy,
+  mapSemanticResultToPolicyDecision,
+  applySemanticResultToEnvelope,
+} from './semantic-policy/index.js';
+
 export { placeholderTelemetryEvent, type TelemetryEvent } from './telemetry/index.js';
 export { placeholderAuditRecord, type AuditRecord } from './audit/index.js';

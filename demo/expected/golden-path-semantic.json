@@ -1,0 +1,10 @@
+{
+  "scenario_id": "golden-path",
+  "semantic_validation": {
+    "accepted": true,
+    "engine": "deterministic_semantic_rules_v1",
+    "final_semantic_result": "allowed",
+    "policy_decision": "allow",
+    "reason_codes": []
+  }
+}

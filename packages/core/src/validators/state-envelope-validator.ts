@@ -8,8 +8,8 @@ import {
   POLICY_DECISIONS,
   RELEASE_STATUSES,
   REVOCATION_STATUSES,
-  RISK_MODES,
-  SOURCE_TRUST_LEVELS,
+  isRiskMode,
+  isSourceTrustLevel,
 } from '../types/risk.js';
 import { validateAsciiSlug } from './ascii-slug.js';
 import { validateNonNegativeSafeInteger } from './positive-safe-integer.js';
@@ -120,10 +120,10 @@ export function validateStateEnvelope(input: unknown): ValidationResult<StateEnv
     return merged;
   }
 
-  if (!isEnumValue(record.risk_mode, RISK_MODES)) {
+  if (!isRiskMode(record.risk_mode)) {
     return failure('risk_mode is invalid');
   }
-  if (!isEnumValue(record.source_trust_level, SOURCE_TRUST_LEVELS)) {
+  if (!isSourceTrustLevel(record.source_trust_level)) {
     return failure('source_trust_level is invalid');
   }
   if (!isEnumValue(record.release_status, RELEASE_STATUSES)) {
