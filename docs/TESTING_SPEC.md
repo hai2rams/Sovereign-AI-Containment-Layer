@@ -13,13 +13,14 @@ streamlit run dashboard/app.py   # manual smoke
 
 | Path | Scope |
 |------|-------|
-| `packages/core/tests/` | Core unit placeholders |
+| `packages/core/tests/` | M1 boundary validators + strict JSON intake (25 tests) |
 | `packages/t3-adapter/tests/` | Adapter interface placeholders |
 | `tests/integration/` | Cross-package placeholders |
 | `tests/dashboard/` | Dashboard import / shell tests |
 
-## M0 acceptance
+## M1 acceptance
 
-- All placeholder tests pass
+- All boundary validator tests pass
+- Strict JSON duplicate-key rejection covered by custom parser tests
 - No network calls to T3 in CI
 - No secrets in test fixtures

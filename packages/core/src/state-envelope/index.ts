@@ -1,9 +1,2 @@
-/** M0 placeholder — agent state envelope (M1). */
-export type StateEnvelope = {
-  version: '0.0-m0';
-  payload: Record<string, unknown>;
-};
-
-export function createPlaceholderEnvelope(): StateEnvelope {
-  return { version: '0.0-m0', payload: {} };
-}
+export type { StateEnvelope, MemoryQuotaState } from '../types/state-envelope.js';
+export { STATE_ENVELOPE_VERSION } from '../types/state-envelope.js';

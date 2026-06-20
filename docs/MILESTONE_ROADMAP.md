@@ -4,9 +4,9 @@
 
 | Milestone | Focus | Status |
 |-----------|-------|--------|
-| **M0** | Clean skeleton, docs, adapter boundary, dashboard shell | **Active** |
-| M1 | State envelope + strict JSON validation | Planned |
-| M2 | Semantic policy engine | Planned |
+| **M0** | Clean skeleton, docs, adapter boundary, dashboard shell | Complete |
+| **M1** | Control-plane types, validators, strict JSON intake | **Active** |
+| M2 | Semantic policy engine (runtime) | Planned |
 | M3 | Telemetry + audit pipeline | Planned |
 | M4 | T3 adapter anchoring (read + deferred write) | Planned |
 | M4.5 | Control plane boundary (see `M4_5_CONTROL_PLANE_BOUNDARY.md`) | Planned |

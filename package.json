@@ -9,6 +9,7 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run typecheck",
     "test": "npm run test --workspaces --if-present && node --import tsx --test tests/integration/*.test.ts"
   },
   "engines": {
