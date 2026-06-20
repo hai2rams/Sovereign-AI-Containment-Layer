@@ -229,10 +229,12 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Fixed-schema contracted output | Only allowed output shapes | M8 | Planned | — | |
-| High-entropy output blocking | Exfil pattern detection | M8 | Planned | — | |
-| Streaming disabled in quarantine | No stream egress when quarantined | M8, M9 | Planned | — | |
-| Fixed-interval timing padding | Timing side-channel mitigation | M8 | Planned | — | |
+| Fixed-schema contracted output | Only allowed output shapes | M8 | Complete | `schema-contract.test.ts` | ACTION_PROPOSAL_V1 + TEXT_EGRESS_V1 |
+| High-entropy output blocking | Exfil pattern detection | M8 | Complete | `exfil-detector.test.ts` | Pattern + entropy heuristics |
+| Streaming disabled in quarantine | No stream egress when quarantined | M8, M9 | Complete | `streaming-gate.test.ts` | Revoked also blocks stream |
+| Fixed-interval timing padding | Timing side-channel mitigation | M8 | Complete | `timing-pad.test.ts` | Placeholder pad ms |
+| Egress allowlist | Certified destinations only | M8 | Complete | `egress-verifier.test.ts` | |
+| Hash-locked policy | `egress_policy_hash` artifact | M8 | Complete | `egress-verifier.test.ts` | |
 
 **Scope:** Full Product
 
@@ -307,7 +309,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M5 | Token broker | Complete |
 | M6 | Tool executor verification | Complete |
 | M7 | Memory firewall | Complete |
-| M8 | Egress firewall | Planned |
+| M8 | Egress firewall | Complete |
 | M9 | Revocation, quarantine, heartbeat | Planned |
 | M10 | Red-team scenario engine | Planned |
 | M11 | Full dashboard | Planned |

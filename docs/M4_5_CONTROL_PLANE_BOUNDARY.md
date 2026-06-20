@@ -63,3 +63,13 @@ The Streamlit dashboard is a **read-mostly control plane**. It must not weaken c
 - **Similarity hooks** detect duplicate hashes and normalized-similar payloads (memory poisoning defense).
 - **Read trust revalidation** blocks reads when stored evidence trust is worse than session trust.
 - **M7 does not persist memory** — `payload_stored` and `payload_returned` remain `false`.
+
+## M8 implementation notes
+
+- **Egress Firewall** gates all outbound output before transmission.
+- **Contracted output only** — `ACTION_PROPOSAL_V1` (strict JSON) and `TEXT_EGRESS_V1` (bounded plain text).
+- **Certified destination allowlist** — egress blocked for unknown sinks.
+- **Exfil defense** — private key / token patterns and high-entropy blobs blocked.
+- **Streaming disabled** in `quarantine` and `revoked` risk modes.
+- **Hash-locked egress policy** — `envelope_policy_hash` must match policy artifact.
+- **M8 does not transmit** — `egress_transmitted` remains `false`.

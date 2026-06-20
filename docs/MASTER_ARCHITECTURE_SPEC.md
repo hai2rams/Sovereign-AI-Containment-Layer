@@ -31,6 +31,7 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 - **Token Broker approval alone is not enough** — parameter hash must match at execution time.
 - **M6 performs verification only** — `downstream_tool_called` and `transaction_executed` always `false`.
 - **Memory Firewall** (`packages/core/src/memory-firewall`) enforces quota, inert payloads, and similarity hooks; no persistent store in M7.
+- **Egress Firewall** (`packages/core/src/egress-firewall`) validates contracted output, allowlisted destinations, and exfil patterns; no live transmission in M8.
 - No payment execution or ungated production T3 writes.
 
 ## Prototype reference

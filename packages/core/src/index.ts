@@ -156,3 +156,19 @@ export {
   assertMemoryFirewallTelemetrySafe,
   type MemoryFirewallTelemetryPayload,
 } from './memory-firewall/index.js';
+
+export {
+  type EgressDecision,
+  type EgressBlockedReason,
+  type EgressPolicyArtifact,
+  type EgressVerificationRequest,
+  type EgressVerificationResult,
+  EGRESS_BLOCKED_REASONS,
+  DEFAULT_EGRESS_POLICY,
+  verifyEgress,
+  validateEgressSchemaContract,
+  detectExfilPatterns,
+  buildEgressTelemetryPayload,
+  assertEgressTelemetrySafe,
+  type EgressTelemetryPayload,
+} from './egress-firewall/index.js';

@@ -25,7 +25,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M5** | Parameter-bound token broker | Complete |
 | **M6** | Tool executor verification | Complete |
 | **M7** | Memory firewall | Complete |
-| **M8** | Output / egress firewall | Planned |
+| **M8** | Output / egress firewall | Complete |
 | **M9** | Revocation and quarantine engine | Planned |
 | **M10** | Red-team scenario engine | Planned |
 | **M11** | Streamlit dashboard (full control plane) | Planned |
@@ -116,9 +116,14 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M8 — Output / egress firewall
 
-- [ ] Certified egress allowlist enforcement
-- [ ] Block exfiltration patterns in tool/RAG outputs
-- [ ] Hash-lock egress policy artifacts
+- [x] Certified egress destination allowlist enforcement
+- [x] Fixed-schema contracted output validation (`ACTION_PROPOSAL_V1`, `TEXT_EGRESS_V1`)
+- [x] Exfil pattern + high-entropy output blocking
+- [x] Hash-locked egress policy artifact binding (`envelope_policy_hash`)
+- [x] Streaming disabled in `quarantine` / `revoked`
+- [x] Fixed-interval timing pad (side-channel mitigation placeholder)
+- [x] `EGRESS_CONTRACTION_APPLIED` telemetry (safe fields only)
+- [ ] Live egress transmission wiring (later milestone — `egress_transmitted: false` in M8)
 
 ### M9 — Revocation and quarantine engine
 
