@@ -20,7 +20,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M0** | Clean project skeleton | Complete |
 | **M1** | Control-plane boundary, strict JSON intake, StateEnvelope isolation | Complete |
 | **M2** | Deterministic semantic policy engine | Complete |
-| **M3** | Telemetry and audit pipeline | Planned |
+| **M3** | Telemetry and audit pipeline | Complete |
 | **M4** | T3 adapter anchoring | Planned |
 | **M5** | Parameter-bound token broker | Planned |
 | **M6** | Tool executor verification | Planned |
@@ -59,11 +59,14 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M3 — Telemetry and audit pipeline
 
-- [ ] Structured telemetry event schema in `packages/core`
-- [ ] Audit record chaining / hash-linked ledger scaffold
-- [ ] Emit on semantic evaluation, policy denial, and state transitions
-- [ ] Append-only `data/telemetry/telemetry_stream.jsonl` writer
-- [ ] Dashboard telemetry reader wired to validated events
+- [x] Telemetry event envelope (`telemetry.v1`) with trace/span/sequence/hash chain
+- [x] JSONL append-only writer
+- [x] Safe preview (UTF-8 truncation, Base64URL demo encoding)
+- [x] Demo/production redaction profiles
+- [x] Audit receipt model with state roots and `t3_anchor_pending`
+- [x] Audit ledger + state root placeholder
+- [x] Deterministic poisoned-invoice trace emission
+- [ ] Advisory classifier runtime (deferred to M3.5 / integrated with risk escalation)
 
 ### M4 — T3 adapter anchoring
 

@@ -46,5 +46,24 @@ export {
   applySemanticResultToEnvelope,
 } from './semantic-policy/index.js';
 
-export { placeholderTelemetryEvent, type TelemetryEvent } from './telemetry/index.js';
-export { placeholderAuditRecord, type AuditRecord } from './audit/index.js';
+export {
+  type TelemetryEventType,
+  type TelemetryEventEnvelope,
+  type TelemetryEventStatus,
+  TELEMETRY_EVENT_TYPES,
+  TelemetryEmitter,
+  TelemetryJsonlWriter,
+  buildTelemetryEvent,
+  buildSafePreview,
+  verifyHashChain,
+  emitPoisonedInvoiceTrace,
+  type RedactionProfile,
+} from './telemetry/index.js';
+
+export {
+  type AuditReceipt,
+  type AuditStateRoot as AuditLedgerStateRoot,
+  AuditLedger,
+  createAuditReceipt,
+  placeholderAuditStateRoot,
+} from './audit/index.js';

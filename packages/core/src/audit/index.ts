@@ -1,10 +1,8 @@
-/** M0 placeholder — audit record shape. */
-export type AuditRecord = {
-  id: string;
-  action: string;
-  ts: string;
-};
-
-export function placeholderAuditRecord(action = 'm0.stub'): AuditRecord {
-  return { id: 'm0', action, ts: new Date().toISOString() };
-}
+export type { AuditReceipt } from './audit-receipt.js';
+export { createAuditReceipt, EMPTY_AUDIT_ROOT } from './audit-receipt.js';
+export { AuditLedger, type AuditLedgerEntry } from './audit-ledger.js';
+export {
+  placeholderAuditStateRoot,
+  auditStateRootFromLedgerHash,
+  type AuditStateRoot,
+} from './audit-state-root.js';

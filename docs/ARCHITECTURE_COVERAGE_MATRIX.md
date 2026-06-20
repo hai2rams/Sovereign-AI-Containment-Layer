@@ -109,12 +109,12 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Event envelope | Typed telemetry events | M3 | Planned | Placeholder in `telemetry/index.ts` | |
-| Trace/span/event sequence | Ordered observability model | M3 | Planned | — | |
-| Event hash chain | Tamper-evident sequence | M3 | Planned | — | |
-| JSONL append-only stream | `data/telemetry/telemetry_stream.jsonl` | M3 | Planned | `telemetry_reader` (read stub) | Writer not yet implemented |
-| Safe preview | Truncated fields for UI | M3, M11 | Planned | Dashboard tests | |
-| Redaction profiles | Profile-driven field masking | M3, M11 | Planned | `redaction.py` stub | |
+| Event envelope | Typed telemetry events | M3 | Complete | `telemetry-event-schema.test.ts` | `telemetry.v1` schema |
+| Trace/span/event sequence | Ordered observability model | M3 | Complete | `telemetry-event-schema.test.ts` | `trace_id`, `span_id`, `parent_span_id` |
+| Event hash chain | Tamper-evident sequence | M3 | Complete | `telemetry-hash-chain.test.ts` | |
+| JSONL append-only stream | `data/telemetry/telemetry_stream.jsonl` | M3 | Complete | `telemetry-jsonl-writer.test.ts` | Writer in core; dashboard read stub |
+| Safe preview | Truncated fields for UI | M3 | Complete | `safe-preview.test.ts` | UTF-8 + Base64URL |
+| Redaction profiles | Profile-driven field masking | M3 | Complete | `redaction.test.ts` | demo vs production |
 
 **Scope:** Full Product · Timeline panel is **Presentation Slice** in judge demo
 
@@ -124,10 +124,10 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Audit receipts | `audit_receipt_id` in StateEnvelope | M3 | Planned | `audit/index.ts` placeholder | |
-| State roots | `previous_state_root` / `current_state_root` | M1, M3, M4 | Partial | StateEnvelope schema | Anchoring in M4 |
-| `t3_anchor_pending` | Pending anchor status before confirm | M4 | Planned | — | |
-| No raw secrets | Redacted audit payloads | M3, M11 | Planned | — | |
+| Audit receipts | `audit_receipt_id` in StateEnvelope | M3 | Complete | `audit-receipt.test.ts` | `t3_anchor_pending: true` |
+| State roots | `previous_state_root` / `current_state_root` | M1, M3, M4 | Partial | `audit-ledger.test.ts` | T3 anchor in M4 |
+| `t3_anchor_pending` | Pending anchor status before confirm | M3, M4 | Complete | `audit-receipt.test.ts` | Always true in M3 |
+| No raw secrets | Redacted audit payloads | M3, M11 | Partial | `redaction.test.ts` | Dashboard wiring M11 |
 
 **Scope:** Full Product
 
@@ -296,7 +296,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M0 | Thesis docs, T3 boundary shell, dashboard shell | Complete |
 | M1 | StateEnvelope, SanitizedPacket, Strict JSON, validators | Complete |
 | M2 | Semantic policy (all 8 rules) | Complete |
-| M3 | Advisory classifier, telemetry, audit (partial) | Planned |
+| M3 | Advisory classifier (deferred), telemetry, audit foundation | Complete (foundation) |
 | M4 | T3 adapter anchoring | Planned |
 | M5 | Token broker | Planned |
 | M6 | Tool executor verification | Planned |
