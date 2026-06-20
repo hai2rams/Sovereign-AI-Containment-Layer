@@ -1,6 +1,6 @@
 # Milestone Roadmap
 
-> **The judge demo is a curated proof slice of the larger architecture. It does not define the full implementation scope.**
+> **The judge demo is a curated proof slice of the larger Sovereign AI Containment Layer architecture. It does not define or limit the full implementation scope.**
 
 This document maintains **two separate tracks**:
 
