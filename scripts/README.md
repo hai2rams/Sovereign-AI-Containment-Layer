@@ -1,7 +1,11 @@
-# Scripts
+# Scripts (M0)
 
 | Script | Purpose |
 |--------|---------|
-| `dev-check.sh` | Install, build, and run workspace tests |
+| `run-demo.ts` | Demo runner stub (no execution) |
+| `reset-demo.ts` | Reset demo state stub |
+| `export-trace.ts` | Trace export stub |
 
-M0: no T3 registration or secrets-map scripts (see prototype branch for reference).
+```bash
+npx tsx scripts/run-demo.ts --scenario=golden-path
+```

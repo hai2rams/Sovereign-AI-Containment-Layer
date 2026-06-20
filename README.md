@@ -1,52 +1,54 @@
 # Sovereign AI Containment Layer
 
-Clean architecture rebuild of the containment platform. We do **not** claim that an LLM is inherently safe. We claim that an autonomous agent can only operate inside a **certified, hash-locked, attested, policy-bound, auditable, and revocable** containment layer.
+**M0 skeleton only** — clean architecture rebuild. No payment execution, no secrets, no production T3 writes.
 
-## Branches
+We do **not** claim that an LLM is inherently safe. We claim that an autonomous agent can only operate inside a **certified, hash-locked, attested, policy-bound, auditable, and revocable** containment layer.
+
+## Repository strategy
 
 | Branch / tag | Purpose |
 |--------------|---------|
-| `prototype/t3-validated` | Preserved working prototype (M0–M5 monorepo) |
+| `prototype/t3-validated` | Preserved working prototype (reference) |
 | `prototype-t3-validated-v1` | Immutable tag on prototype state |
-| `clean-main` | New architecture-aligned implementation (this branch) |
-| `main` | Previous integration history |
+| `clean-main` | Architecture-aligned rebuild (**this branch**) |
+| `main` | Prior integration history |
 
-The old T3/contract work remains on `prototype/t3-validated` for reference. It is **not** copied wholesale into `packages/core`.
+Old T3/contract code is **not** deleted — it remains on the prototype branch for reference. Only useful anchoring logic will be ported later into `packages/t3-adapter`.
 
 ## Layout (M0)
 
+```text
+docs/                    Locked architecture & roadmap placeholders
+packages/core/           Containment domain (no T3 contract deps)
+packages/t3-adapter/     AnchorAdapter interface placeholder
+dashboard/               Streamlit control-plane shell
+demo/scenarios/          Scenario fixture placeholders
+data/telemetry/          Telemetry JSONL placeholder
+tests/                   Integration + dashboard tests
+scripts/                 Demo script stubs
 ```
-docs/                 Architecture and milestone docs
-packages/core/        Containment domain — depends on AnchorAdapter only
-packages/t3-adapter/  T3/T3E anchoring port (no direct use in core)
-dashboard/            Streamlit operator UI skeleton
-demo/                 Scenario fixtures (no live execution)
-tests/                Cross-package tests
-data/telemetry/       Local telemetry placeholders (gitignored JSON)
-scripts/              Dev and ops scripts
-```
-
-## M0 scope
-
-- Clean skeleton and documentation placeholders
-- TypeScript `core` package with abstract `AnchorAdapter`
-- `t3-adapter` with ported session/config and anchoring interface stubs
-- Streamlit dashboard skeleton
-- Demo scenario folders and test folders
-- **No** real payment execution
-- **No** secrets committed
-- **No** production T3 writes yet
 
 ## Quick start
 
 ```bash
 npm install
 npm run build
-npm run test
+npm test
 ```
 
 ```bash
-cd dashboard && pip install -r requirements.txt && streamlit run app.py
+pip install -r dashboard/requirements.txt
+# or: python3 -m venv .venv && .venv/bin/pip install -r dashboard/requirements.txt
+python -m pytest tests/dashboard
+streamlit run dashboard/app.py
 ```
 
-See `docs/README.md` for architecture notes and prototype reference.
+## M0 boundaries
+
+- `packages/core` defines abstract root objects — no `@terminal3/t3n-sdk`
+- `packages/t3-adapter` defines `AnchorAdapter` / `AnchorReceipt` placeholder
+- Dashboard components are shells — no weakened policy paths for UI convenience
+
+See `docs/MASTER_ARCHITECTURE_SPEC.md` and `docs/MILESTONE_ROADMAP.md`.
+
+**Do not proceed to M1 until M0 is reviewed.**

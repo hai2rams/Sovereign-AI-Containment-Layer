@@ -1,5 +1,6 @@
 .env
 .env.local
+configs/.env
 node_modules
 dist
 build
@@ -9,5 +10,7 @@ build
 artifacts/
 __pycache__/
 .venv/
-data/telemetry/*.json
-!data/telemetry/.gitkeep
+.venv/
+.pytest_cache/
+data/telemetry/*.jsonl
+!data/telemetry/telemetry_stream.jsonl

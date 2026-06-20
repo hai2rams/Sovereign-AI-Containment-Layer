@@ -14,11 +14,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --import tsx --test src/**/*.test.ts"
-  },
-  "dependencies": {
-    "@sovereign/core": "0.2.0",
-    "@terminal3/t3n-sdk": "^3.5.0"
+    "test": "node --import tsx --test tests/**/*.test.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
