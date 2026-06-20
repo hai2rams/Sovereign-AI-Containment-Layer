@@ -1,0 +1,13 @@
+.env
+.env.local
+node_modules
+dist
+build
+*.tsbuildinfo
+.DS_Store
+*.log
+artifacts/
+__pycache__/
+.venv/
+data/telemetry/*.json
+!data/telemetry/.gitkeep
