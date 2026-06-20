@@ -9,6 +9,8 @@ This document maintains **two separate tracks**:
 
 Do not collapse full-architecture milestones because the judge demo shows fewer workflows.
 
+**Governance:** [`ARCHITECTURE_COVERAGE_MATRIX.md`](./ARCHITECTURE_COVERAGE_MATRIX.md) maps every locked v9/v10 requirement to a milestone, test coverage, and scope (`Full Product` vs `Presentation Slice`). Update the matrix when implementation status changes.
+
 ---
 
 ## Track 1 — Full Architecture Implementation Roadmap
@@ -175,3 +177,5 @@ This track is a **presentation slice**. Implementation progress follows **Track 
 | M1+ on `clean-main` | Autopilot against this roadmap |
 
 Prototype reference: `prototype/t3-validated` / `prototype-t3-validated-v1`.
+
+See also: [`ARCHITECTURE_COVERAGE_MATRIX.md`](./ARCHITECTURE_COVERAGE_MATRIX.md) for locked-spec alignment tracking.

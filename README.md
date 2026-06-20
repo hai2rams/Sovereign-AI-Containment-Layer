@@ -6,7 +6,7 @@ We do **not** claim the LLM is inherently safe. We claim autonomous agents can o
 
 A full architecture implementation — not just a judge demo. The **judge demo** is a curated proof slice (golden path, poisoned invoice, parameter swap, memory poisoning, plus optional revocation/telemetry scenarios). It demonstrates the containment claim visually; it does **not** define the full build scope.
 
-See **`docs/MILESTONE_ROADMAP.md`** for the complete implementation roadmap (M0–M13) and the separate judge-demo track.
+See **`docs/MILESTONE_ROADMAP.md`** for the complete implementation roadmap (M0–M13) and the separate judge-demo track. **`docs/ARCHITECTURE_COVERAGE_MATRIX.md`** maps every locked architecture requirement to milestones so the demo cannot shrink the full product.
 
 ## Containment claim (demo narrative)
 
