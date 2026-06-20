@@ -21,7 +21,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M1** | Control-plane boundary, strict JSON intake, StateEnvelope isolation | Complete |
 | **M2** | Deterministic semantic policy engine | Complete |
 | **M3** | Telemetry and audit pipeline | Complete |
-| **M4** | T3 adapter anchoring | Planned |
+| **M4** | T3 adapter anchoring | Complete |
 | **M5** | Parameter-bound token broker | Planned |
 | **M6** | Tool executor verification | Planned |
 | **M7** | Memory firewall | Planned |
@@ -70,11 +70,15 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M4 — T3 adapter anchoring
 
-- [ ] Port vetted session/bootstrap from prototype reference only
-- [ ] Implement `AnchorAdapter` write path (deferred → production gated)
-- [ ] Anchor release root, policy hash, audit state root, revocation state root
-- [ ] Read/status endpoints for dashboard display
-- [ ] No secrets in repo; no unreviewed contract mutations
+- [x] `AnchorAdapter` interface with `AnchorReceipt` (mode, status, adapter kind)
+- [x] `PlaceholderAnchorAdapter` — deterministic dry-run (default)
+- [x] `T3AnchorAdapter` — env-gated; session bootstrap ported from prototype reference
+- [x] Root hash validation (`sha256:<64 lowercase hex>`) before anchor attempts
+- [x] `T3_ANCHOR_MODE=dry_run` default; `real_write` fail-closed without secrets
+- [x] T3 anchor telemetry payloads (`T3_ANCHOR_ATTEMPTED|CONFIRMED|FAILED`)
+- [x] `attachAnchorResultToAuditReceipt` — non-destructive audit integration
+- [ ] Production contract execute (explicitly gated — pending future milestone)
+- [ ] Dashboard anchor status display (M11)
 
 ### M5 — Parameter-bound token broker
 

@@ -10,7 +10,7 @@ export type AuditReceipt = {
   previous_state_root: Sha256Hex;
   current_state_root: Sha256Hex;
   event_hash: string;
-  t3_anchor_pending: true;
+  t3_anchor_pending: boolean;
   reason_codes: string[];
 };
 

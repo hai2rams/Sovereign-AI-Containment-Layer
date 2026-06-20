@@ -65,5 +65,6 @@ export {
   type AuditStateRoot as AuditLedgerStateRoot,
   AuditLedger,
   createAuditReceipt,
+  EMPTY_AUDIT_ROOT,
   placeholderAuditStateRoot,
 } from './audit/index.js';

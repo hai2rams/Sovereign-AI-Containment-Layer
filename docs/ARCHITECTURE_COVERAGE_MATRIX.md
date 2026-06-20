@@ -137,11 +137,14 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Adapter boundary only | `packages/t3-adapter`; core has no SDK import | M0, M4 | Partial | `t3-adapter` placeholder tests | M0 interface only |
-| Root anchoring only | release, policy, audit, revocation roots | M4 | Planned | — | No payment execution |
-| No core dependency on contract | `AnchorAdapter` interface at boundary | M0, M4 | Partial | `m0-boundary.test.ts` | Port from prototype reference only |
+| Adapter boundary only | `packages/t3-adapter`; core has no SDK import | M0, M4 | Complete | `t3-adapter` unit + `m4-t3-boundary.test.ts` | No `@terminal3/t3n-sdk` in core |
+| Root anchoring only | release, policy, audit, revocation roots | M4 | Complete | `placeholder-anchor-adapter.test.ts`, `t3-anchor-adapter.test.ts` | Rejects raw prompts/docs/tokens |
+| No core dependency on contract | `AnchorAdapter` interface at boundary | M0, M4 | Complete | `m0-boundary.test.ts`, `m4-t3-boundary.test.ts` | Session bootstrap in adapter only |
+| Dry-run default | `T3_ANCHOR_MODE=dry_run` | M4 | Complete | `anchor-config.test.ts` | No secrets required |
+| Real-write gated | `T3_ANCHOR_MODE=real_write` fail-closed | M4 | Partial | `anchor-config.test.ts`, `t3-anchor-adapter.test.ts` | Contract execute stubbed |
+| T3 not policy authority | Local control plane authoritative | M4 | Complete | `audit-anchor-bridge` tests | Anchor failure preserves audit |
 
-**Scope:** Full Product · Header matrix roots are **Presentation Slice** until M4
+**Scope:** Full Product · Header matrix roots are **Presentation Slice** until dashboard wiring (M11)
 
 ---
 

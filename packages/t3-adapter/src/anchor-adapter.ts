@@ -1,10 +1,4 @@
-export interface AnchorReceipt {
-  anchor_id: string;
-  root_hash: string;
-  anchor_type: 'release' | 'policy' | 'audit' | 'revocation';
-  anchored_at: string;
-  status: 'pending' | 'confirmed' | 'failed';
-}
+import type { AnchorReceipt } from './anchor-receipt.js';
 
 export interface AnchorAdapter {
   anchorReleaseRoot(root: string): Promise<AnchorReceipt>;
