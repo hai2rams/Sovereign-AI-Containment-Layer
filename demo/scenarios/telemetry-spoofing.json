@@ -1,1 +1,7 @@
-{"id":"telemetry-spoofing","title":"Telemetry spoofing","status":"m0-placeholder","description":"Invalid or replayed telemetry events."}
+{
+  "id": "telemetry-spoofing",
+  "title": "Telemetry spoofing",
+  "status": "m10-ready",
+  "description": "Invalid or replayed telemetry events detected by hash chain verification.",
+  "replay_ref": "telemetry-spoofing-broken-chain.json"
+}

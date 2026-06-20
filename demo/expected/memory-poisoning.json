@@ -1,0 +1,9 @@
+{
+  "scenario_id": "memory-poisoning",
+  "outcome": "contained",
+  "memory_firewall": {
+    "decision": "blocked",
+    "required_reason_codes": ["MEMORY_PAYLOAD_NOT_INERT"],
+    "quarantine_recommended": true
+  }
+}

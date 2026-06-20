@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "evt-001",
+      "event_type": "SESSION_STARTED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:00.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-001",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "event_sequence": 1,
+      "previous_event_hash": null,
+      "payload": {},
+      "event_hash": "ab794cdfeedb8c84ac7e343356d72ebee7abca7f844de7579ec675871eec2d29"
+    },
+    {
+      "schema_version": "telemetry.v1",
+      "event_id": "evt-002",
+      "event_type": "SEMANTIC_VALIDATION_COMPLETED",
+      "event_status": "recorded",
+      "emitted_at": "2030-01-01T00:00:01.000Z",
+      "session_id": "session-001",
+      "trace_id": "trace-001",
+      "span_id": "span-2",
+      "parent_span_id": null,
+      "event_sequence": 2,
+      "previous_event_hash": "deadbeef",
+      "payload": {},
+      "event_hash": "9f31592ee289a375493789b1c5f512fbba7260139b3f69cdf016687df1413020"
+    }
+  ]
+}

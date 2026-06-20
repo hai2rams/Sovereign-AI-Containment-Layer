@@ -257,12 +257,12 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Poisoned invoice | Semantic block demonstration | M2, M10 | Partial | `semantic-policy-engine.test.ts`, fixtures | **Presentation Slice** + full harness M10 |
-| Parameter swap | Executor verification failure | M6, M10 | Partial | `tool-executor-verifier.test.ts`, `demo/scenarios/parameter-swap.json` | **Presentation Slice** |
-| Memory poisoning | Memory firewall containment | M7, M10 | Partial | `memory-firewall.test.ts`, `demo/scenarios/memory-poisoning.json` | **Presentation Slice** |
+| Poisoned invoice | Semantic block demonstration | M2, M10 | Complete | `semantic-policy-engine.test.ts`, `scenario-runner.test.ts` | **Presentation Slice** + full harness M10 |
+| Parameter swap | Executor verification failure | M6, M10 | Complete | `tool-executor-verifier.test.ts`, `scenario-runner.test.ts` | **Presentation Slice** |
+| Memory poisoning | Memory firewall containment | M7, M10 | Complete | `memory-firewall.test.ts`, `scenario-runner.test.ts` | **Presentation Slice** |
 | Duplicate JSON key | Strict JSON rejection | M1, M10 | Complete | `strict-json-intake.test.ts` | Full + demo |
-| Revocation race | Epoch race handling | M9, M10 | Partial | `in-flight-race.test.ts`, `demo/scenarios/revocation-race.json` | Optional **Presentation Slice** |
-| Heartbeat replay | Nonce replay rejection | M9, M10 | Partial | `heartbeat.test.ts` | Full product |
+| Revocation race | Epoch race handling | M9, M10 | Complete | `in-flight-race.test.ts`, `scenario-runner.test.ts` | Optional **Presentation Slice** |
+| Heartbeat replay | Nonce replay rejection | M9, M10 | Complete | `heartbeat.test.ts` | Full product |
 | Telemetry spoofing | Hash chain / validation reject | M3, M10 | Planned | `demo/scenarios/telemetry-spoofing.json` | Optional **Presentation Slice** |
 
 **Scope:** M10 = Full Product harness; individual scenarios marked above where demo-only narrative applies
@@ -291,7 +291,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | Backend unit tests | Per-module validators and rules | M1, M2, M12 | Complete / Planned | 42 core tests (M1–M2) | |
 | Integration tests | Cross-package boundary | M12 | Partial | `m0-boundary.test.ts` | Expand in M12 |
 | Dashboard tests | Streamlit module imports | M12 | Partial | `tests/dashboard` (4 tests) | |
-| Scenario replay tests | Golden vs `demo/expected/` | M10, M12 | Planned | Expected JSON stubs exist | |
+| Scenario replay tests | Golden vs `demo/expected/` | M10, M12 | Partial | `scenario-runner.test.ts`, `npm run demo:all` | |
 
 **Scope:** Full Product
 
@@ -311,7 +311,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M7 | Memory firewall | Complete |
 | M8 | Egress firewall | Complete |
 | M9 | Revocation, quarantine, heartbeat | Complete |
-| M10 | Red-team scenario engine | Planned |
+| M10 | Red-team scenario engine | Complete |
 | M11 | Full dashboard | Planned |
 | M12 | AppTest / integration | In Progress |
 | M13 | Thesis packaging, pitch material | Planned |

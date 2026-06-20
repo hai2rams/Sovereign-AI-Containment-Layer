@@ -1,0 +1,8 @@
+{
+  "scenario_id": "parameter-swap",
+  "outcome": "contained",
+  "tool_execution": {
+    "verification_result": "blocked",
+    "required_reason_codes": ["PARAMETER_HASH_MISMATCH"]
+  }
+}

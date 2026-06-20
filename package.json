@@ -10,6 +10,8 @@
     "build": "npm run build --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run typecheck",
+    "demo": "npx tsx scripts/run-demo.ts",
+    "demo:all": "npx tsx scripts/run-demo.ts --all --compare-expected",
     "test": "npm run test --workspaces --if-present && node --import tsx --test tests/integration/*.test.ts"
   },
   "engines": {

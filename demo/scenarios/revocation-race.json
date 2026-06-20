@@ -1,1 +1,26 @@
-{"id":"revocation-race","title":"Revocation race","status":"m0-placeholder","description":"In-flight action vs revocation state root change."}
+{
+  "id": "revocation-race",
+  "title": "Revocation race",
+  "status": "m10-ready",
+  "description": "In-flight action vs revocation state root change.",
+  "proposal": {
+    "action": "payment.transfer",
+    "amount_minor_units": 100000,
+    "currency": "USD",
+    "destination": "approved-vendor-001",
+    "reason_code": "invoice-123",
+    "payment_reference": "invoice-123"
+  },
+  "envelope": {
+    "source_trust_level": 1,
+    "user_role": "finance-operator",
+    "risk_mode": "normal",
+    "release_status": "certified",
+    "revocation_status": "active",
+    "attestation_id": "attest-001",
+    "revocation_epoch": 42,
+    "containment_epoch": 7
+  },
+  "revocation_signal": "quarantine",
+  "policy_ref": "default-payment-policy-v1"
+}

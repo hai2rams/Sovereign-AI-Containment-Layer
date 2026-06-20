@@ -27,7 +27,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M7** | Memory firewall | Complete |
 | **M8** | Output / egress firewall | Complete |
 | **M9** | Revocation and quarantine engine | Complete |
-| **M10** | Red-team scenario engine | Planned |
+| **M10** | Red-team scenario engine | Complete |
 | **M11** | Streamlit dashboard (full control plane) | Planned |
 | **M12** | AppTest and integration validation | Planned |
 | **M13** | Final documentation and pitch/demo material | Planned |
@@ -135,10 +135,10 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M10 — Red-team scenario engine
 
-- [ ] Runnable scenario harness (`scripts/run-demo.ts` production path)
-- [ ] Fixtures for all architecture demo scenarios (not judge-only subset)
-- [ ] Expected outputs under `demo/expected/`
-- [ ] Replay support under `demo/replays/`
+- [x] Runnable scenario harness (`scripts/run-demo.ts` production path)
+- [x] Fixtures for all architecture demo scenarios (not judge-only subset)
+- [x] Expected outputs under `demo/expected/`
+- [x] Replay support under `demo/replays/`
 
 ### M11 — Streamlit dashboard (full control plane)
 

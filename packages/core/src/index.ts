@@ -200,3 +200,16 @@ export {
   type HeartbeatResult,
   type RevocationTelemetryPayload,
 } from './revocation-engine/index.js';
+
+export {
+  type ScenarioDefinition,
+  type ScenarioRunResult,
+  type ScenarioExpected,
+  runScenario,
+  compareScenarioResult,
+  loadReplayEvents,
+  SCENARIO_IDS,
+  resolvePaymentPolicy,
+  envelopeFromScenario,
+  proposalFromScenario,
+} from './scenario-engine/index.js';

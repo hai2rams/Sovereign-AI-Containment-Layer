@@ -1,0 +1,8 @@
+{
+  "scenario_id": "telemetry-spoofing",
+  "outcome": "contained",
+  "telemetry_chain": {
+    "valid": false,
+    "reason": "previous_event_hash link broken"
+  }
+}

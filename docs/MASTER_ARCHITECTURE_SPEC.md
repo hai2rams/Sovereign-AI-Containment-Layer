@@ -1,6 +1,6 @@
 # Master Architecture Specification
 
-> **Status:** M9 — revocation and quarantine engine foundation; egress firewall (M8) complete.
+> **Status:** M10 — red-team scenario engine; revocation engine (M9) complete.
 
 ## Thesis
 
@@ -33,6 +33,7 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 - **Memory Firewall** (`packages/core/src/memory-firewall`) enforces quota, inert payloads, and similarity hooks; no persistent store in M7.
 - **Egress Firewall** (`packages/core/src/egress-firewall`) validates contracted output, allowlisted destinations, and exfil patterns; no live transmission in M8.
 - **Revocation Engine** (`packages/core/src/revocation-engine`) applies quarantine/revoke signals, bumps epochs, invalidates in-flight tokens, and gates heartbeat renewal.
+- **Scenario Engine** (`packages/core/src/scenario-engine`) runs architecture demo scenarios against golden expected outputs; `scripts/run-demo.ts` is the CLI harness.
 - No payment execution or ungated production T3 writes.
 
 ## Prototype reference

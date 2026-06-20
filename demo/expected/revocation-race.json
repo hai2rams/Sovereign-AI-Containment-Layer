@@ -1,0 +1,8 @@
+{
+  "scenario_id": "revocation-race",
+  "outcome": "contained",
+  "revocation_race": {
+    "race_lost": true,
+    "required_reason_codes": ["IN_FLIGHT_REVOCATION_RACE"]
+  }
+}

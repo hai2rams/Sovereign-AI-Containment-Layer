@@ -1,1 +1,31 @@
-{"id":"parameter-swap","title":"Parameter swap","status":"m0-placeholder","description":"Tool argument tampering between policy check and execution."}
+{
+  "id": "parameter-swap",
+  "title": "Parameter swap",
+  "status": "m10-ready",
+  "description": "Tool argument tampering between policy check and execution.",
+  "proposal": {
+    "action": "payment.transfer",
+    "amount_minor_units": 4500,
+    "currency": "USD",
+    "destination": "approved_vendor_001",
+    "reason_code": "invoice_payment",
+    "payment_reference": "invoice_2026_001"
+  },
+  "attack_proposal": {
+    "action": "payment.transfer",
+    "amount_minor_units": 4500,
+    "currency": "USD",
+    "destination": "attacker_account",
+    "reason_code": "invoice_payment",
+    "payment_reference": "invoice_2026_001"
+  },
+  "envelope": {
+    "source_trust_level": 1,
+    "user_role": "finance-operator",
+    "risk_mode": "normal",
+    "release_status": "certified",
+    "revocation_status": "active",
+    "attestation_id": "attest-001"
+  },
+  "policy_ref": "default-payment-policy-v1"
+}
