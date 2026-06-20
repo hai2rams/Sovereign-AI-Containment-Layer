@@ -289,9 +289,9 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
 | Backend unit tests | Per-module validators and rules | M1, M2, M12 | Complete / Planned | 42 core tests (M1–M2) | |
-| Integration tests | Cross-package boundary | M12 | Partial | `m0-boundary.test.ts` | Expand in M12 |
-| Dashboard tests | Streamlit module imports | M12 | Partial | `tests/dashboard` (4 tests) | |
-| Scenario replay tests | Golden vs `demo/expected/` | M10, M12 | Partial | `scenario-runner.test.ts`, `npm run demo:all` | |
+| Integration tests | Cross-package boundary | M12 | Complete | `m0-boundary.test.ts`, `m12-full-stack.test.ts` | |
+| Dashboard tests | Streamlit module imports | M12 | Complete | `tests/dashboard` (5 tests) | |
+| Scenario replay tests | Golden vs `demo/expected/` | M10, M12 | Complete | `scenario-runner.test.ts`, `m10-scenario-harness.test.ts`, `npm run demo:all` | |
 
 **Scope:** Full Product
 
@@ -313,7 +313,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M9 | Revocation, quarantine, heartbeat | Complete |
 | M10 | Red-team scenario engine | Complete |
 | M11 | Full dashboard | Complete |
-| M12 | AppTest / integration | In Progress |
+| M12 | AppTest / integration | Complete |
 | M13 | Thesis packaging, pitch material | Planned |
 
 ---

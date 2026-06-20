@@ -12,6 +12,7 @@
     "lint": "npm run typecheck",
     "demo": "npx tsx scripts/run-demo.ts",
     "demo:all": "npx tsx scripts/run-demo.ts --all --compare-expected",
+    "ci": "bash scripts/ci.sh",
     "test": "npm run test --workspaces --if-present && node --import tsx --test tests/integration/*.test.ts"
   },
   "engines": {

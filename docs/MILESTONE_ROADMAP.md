@@ -29,7 +29,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M9** | Revocation and quarantine engine | Complete |
 | **M10** | Red-team scenario engine | Complete |
 | **M11** | Streamlit dashboard (full control plane) | Complete |
-| **M12** | AppTest and integration validation | Planned |
+| **M12** | AppTest and integration validation | Complete |
 | **M13** | Final documentation and pitch/demo material | Planned |
 
 ### M0 — Clean project skeleton
@@ -149,10 +149,10 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M12 — AppTest and integration validation
 
-- [ ] Cross-package integration tests (core + adapter + scripts)
-- [ ] Dashboard pytest suite expanded for wired panels
-- [ ] CI script: `npm test`, `npm run build`, `pytest tests/dashboard`
-- [ ] Scenario regression against `demo/expected/`
+- [x] Cross-package integration tests (core + adapter + scripts)
+- [x] Dashboard pytest suite expanded for wired panels
+- [x] CI script: `npm test`, `npm run build`, `pytest tests/dashboard`
+- [x] Scenario regression against `demo/expected/`
 
 ### M13 — Final documentation and pitch/demo material
 
