@@ -44,3 +44,13 @@ The Streamlit dashboard is a **read-mostly control plane**. It must not weaken c
 - **`T3_ANCHOR_MODE=real_write` is explicitly gated** — fail-closed without required env vars; no private keys in repo.
 - **Forbidden anchor content** — raw prompts, documents, action tokens, private `StateEnvelope`, secrets, idempotency keys, full attestation quotes.
 - **`packages/core` does not import** `@terminal3/t3n-sdk` or concrete T3 adapter implementations.
+
+## M5 implementation notes
+
+- **Token Broker issues scoped capability tokens** — `parameter_bound_action_capability` only after semantic `allowed`.
+- **Tokens are parameter-bound** — `parameter_hash = sha256(canonicalize(ActionProposal))`; not general tool permissions.
+- **Token issuance follows deterministic policy only** — blocked, quarantine, read_only, and requires_human_approval do not issue.
+- **Model cannot authorize or mint tokens** — JTI and idempotency key are control-plane generated; forbidden fields rejected at intake.
+- **Mock signing in M5** — `MockTokenSigner` with `mock_sig_v1:` prefix; no real private keys.
+- **Real asymmetric key rotation** comes in a later milestone.
+- **Full Tool Executor verification** is M6 — token verification API not wired yet.

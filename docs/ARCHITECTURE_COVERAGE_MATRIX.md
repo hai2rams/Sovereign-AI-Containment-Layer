@@ -152,11 +152,13 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Parameter hash | Token bound to proposal digest | M5 | Planned | — | |
-| Single-use token | JTI / consumption tracking | M5, M6 | Planned | — | |
-| Short TTL | Expiring capability | M5 | Planned | — | |
-| Signed capability | HMAC or asymmetric sign | M5 | Planned | — | |
-| No token if policy blocks | Issuance gated on semantic `allowed` | M5 | Planned | — | `token_panel` is UI shell only |
+| Parameter hash | Token bound to proposal digest | M5 | Complete | `parameter-hash.test.ts`, `parameter-canonicalizer.test.ts` | Local canonicalizer (not full JCS) |
+| Single-use token | JTI / consumption tracking | M5, M6 | Partial | `jti.test.ts`, `token-broker.test.ts` | Verification in M6 |
+| Short TTL | Expiring capability | M5 | Complete | `token-broker.test.ts` | Default 5 min TTL |
+| Signed capability | HMAC or asymmetric sign | M5 | Partial | `mock-signer.test.ts` | Mock signing only in M5 |
+| No token if policy blocks | Issuance gated on semantic `allowed` | M5 | Complete | `token-policy-gate.test.ts`, `token-broker.test.ts` | Model cannot mint tokens |
+| Idempotency key | Control-plane only | M5 | Complete | `idempotency-key.test.ts` | Bound to session/sequence/hash |
+| Telemetry safe | No secrets in TOKEN_ISSUANCE_DECISION | M5 | Complete | `token-broker.test.ts` | |
 
 **Scope:** Full Product
 
@@ -301,7 +303,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M2 | Semantic policy (all 8 rules) | Complete |
 | M3 | Advisory classifier (deferred), telemetry, audit foundation | Complete (foundation) |
 | M4 | T3 adapter anchoring | Planned |
-| M5 | Token broker | Planned |
+| M5 | Token broker | Complete |
 | M6 | Tool executor verification | Planned |
 | M7 | Memory firewall | Planned |
 | M8 | Egress firewall | Planned |

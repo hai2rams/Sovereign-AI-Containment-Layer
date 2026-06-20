@@ -1,6 +1,6 @@
 # Master Architecture Specification
 
-> **Status:** M4 — T3 adapter anchoring boundary implemented; core remains independent of T3 contract code.
+> **Status:** M5 — parameter-bound token broker foundation; T3 adapter anchoring boundary (M4) complete.
 
 ## Thesis
 
@@ -10,7 +10,7 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 
 | Layer | Package / path | Status |
 |-------|----------------|--------|
-| Domain core | `packages/core` | M1–M3 complete |
+| Domain core | `packages/core` | M1–M5 (policy, telemetry, audit, token broker) |
 | Trust anchor port | `packages/t3-adapter` | M4 anchoring boundary |
 | Control plane UI | `dashboard/` | Streamlit shell (read-only) |
 | Demo & replay | `demo/` | Scenario fixtures |
@@ -24,6 +24,9 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 - **T3 anchors root hashes only** — never raw prompts, documents, tokens, or private `StateEnvelope`.
 - **T3 is not the policy authority** — local deterministic control plane remains authoritative.
 - **`T3_ANCHOR_MODE=dry_run`** is default for local/demo; **`real_write`** requires explicit env gating.
+- **Token Broker** (`packages/core/src/token-broker`) issues parameter-bound capabilities after semantic `allowed` only.
+- **Model cannot mint tokens** — JTI, idempotency key, and signing are control-plane only.
+- **M5 uses mock signing** (`mock_sig_v1:`); real asymmetric signing deferred.
 - No payment execution or ungated production T3 writes.
 
 ## Prototype reference

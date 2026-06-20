@@ -22,7 +22,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M2** | Deterministic semantic policy engine | Complete |
 | **M3** | Telemetry and audit pipeline | Complete |
 | **M4** | T3 adapter anchoring | Complete |
-| **M5** | Parameter-bound token broker | Planned |
+| **M5** | Parameter-bound token broker | Complete |
 | **M6** | Tool executor verification | Planned |
 | **M7** | Memory firewall | Planned |
 | **M8** | Output / egress firewall | Planned |
@@ -82,10 +82,14 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M5 — Parameter-bound token broker
 
-- [ ] HMAC or hash-bound action tokens scoped to proposal + envelope epoch
-- [ ] Token issuance only after semantic `allowed` (or explicit human-approval path)
-- [ ] Token verification API for tool executor gate
-- [ ] No token bypass of semantic or structural validation
+- [x] `ParameterBoundActionToken` claims with parameter hash, epochs, JTI, idempotency key
+- [x] Deterministic parameter canonicalizer + `sha256:` parameter hash
+- [x] `TokenPolicyGate` — issuance only when `final_semantic_result === 'allowed'`
+- [x] `MockTokenSigner` — deterministic mock signatures (no real keys)
+- [x] Control-plane-only `generateJti` and `generateIdempotencyKey`
+- [x] `TOKEN_ISSUANCE_DECISION` telemetry payloads (safe fields only)
+- [ ] Token verification API for tool executor gate (M6)
+- [ ] Real asymmetric signing and key rotation (later milestone)
 
 ### M6 — Tool executor verification
 
