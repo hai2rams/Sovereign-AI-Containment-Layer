@@ -26,7 +26,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M6** | Tool executor verification | Complete |
 | **M7** | Memory firewall | Complete |
 | **M8** | Output / egress firewall | Complete |
-| **M9** | Revocation and quarantine engine | Planned |
+| **M9** | Revocation and quarantine engine | Complete |
 | **M10** | Red-team scenario engine | Planned |
 | **M11** | Streamlit dashboard (full control plane) | Planned |
 | **M12** | AppTest and integration validation | Planned |
@@ -127,10 +127,11 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M9 — Revocation and quarantine engine
 
-- [ ] Revocation state root transitions
-- [ ] In-flight action race handling
-- [ ] Escalate `risk_mode` to `quarantine` / `revoked` without downgrade
-- [ ] Wire revocation signals to semantic + token invalidation
+- [x] Revocation state root transitions
+- [x] In-flight action race handling
+- [x] Escalate `risk_mode` to `quarantine` / `revoked` without downgrade
+- [x] Wire revocation signals to semantic + token invalidation
+- [x] Nonce-bound heartbeat with replay rejection and renewal ceilings
 
 ### M10 — Red-team scenario engine
 

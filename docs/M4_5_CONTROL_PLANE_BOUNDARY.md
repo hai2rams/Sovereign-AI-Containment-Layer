@@ -73,3 +73,13 @@ The Streamlit dashboard is a **read-mostly control plane**. It must not weaken c
 - **Streaming disabled** in `quarantine` and `revoked` risk modes.
 - **Hash-locked egress policy** — `envelope_policy_hash` must match policy artifact.
 - **M8 does not transmit** — `egress_transmitted` remains `false`.
+
+## M9 implementation notes
+
+- **Revocation Engine** applies `quarantine`, `revoke`, and `security_escalation` signals to private `StateEnvelope`.
+- **Epoch monotonicity** — `revocation_epoch` and `containment_epoch` bump on each revocation transition; stale tokens fail verification.
+- **Kill switch** — `quarantine` and `revoked` risk modes block token issuance, heartbeat renewal, and in-flight actions.
+- **Revocation state root** — deterministic `sha256:` root derived from session revocation snapshot (anchorable via T3 in M4).
+- **In-flight race** — tokens issued before epoch bump lose races against updated envelope state.
+- **Heartbeat** — nonce-bound renewal with replay rejection, renewal ceilings, and containment epoch binding.
+- **Token Broker wired** — `evaluateEnvelopeRevocationGate` blocks issuance when revocation state or kill switch is active.

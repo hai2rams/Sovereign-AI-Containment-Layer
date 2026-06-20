@@ -16,6 +16,7 @@ import { generateIdempotencyKey } from './idempotency-key.js';
 import { generateJti } from './jti.js';
 import { buildUnsignedTokenClaims } from './token-claims.js';
 import { evaluateTokenPolicyGate } from './token-policy-gate.js';
+import { evaluateEnvelopeRevocationGate } from '../revocation-engine/envelope-revocation-gate.js';
 import { MockTokenSigner, type TokenSigner } from './mock-signer.js';
 import { TELEMETRY_FORBIDDEN_PAYLOAD_FIELDS } from '../telemetry/types.js';
 
@@ -59,6 +60,11 @@ export class TokenBroker {
     const gate = evaluateTokenPolicyGate(request.semantic.final_semantic_result);
     if (!gate.allowed) {
       return blocked(gate.reason_code);
+    }
+
+    const revocationGate = evaluateEnvelopeRevocationGate(request.envelope);
+    if (!revocationGate.allowed) {
+      return blocked(revocationGate.reason_code);
     }
 
     let parameter_hash;

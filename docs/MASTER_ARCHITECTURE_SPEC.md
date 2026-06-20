@@ -1,6 +1,6 @@
 # Master Architecture Specification
 
-> **Status:** M6 — tool executor verification foundation; parameter-bound token broker (M5) complete.
+> **Status:** M9 — revocation and quarantine engine foundation; egress firewall (M8) complete.
 
 ## Thesis
 
@@ -10,7 +10,7 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 
 | Layer | Package / path | Status |
 |-------|----------------|--------|
-| Domain core | `packages/core` | M1–M6 (policy, telemetry, audit, token broker, tool executor verify) |
+| Domain core | `packages/core` | M1–M9 (policy, telemetry, audit, token broker, tool executor, memory/egress firewalls, revocation) |
 | Trust anchor port | `packages/t3-adapter` | M4 anchoring boundary |
 | Control plane UI | `dashboard/` | Streamlit shell (read-only) |
 | Demo & replay | `demo/` | Scenario fixtures |
@@ -32,6 +32,7 @@ Autonomous agents operate inside a certified, hash-locked, attested, policy-boun
 - **M6 performs verification only** — `downstream_tool_called` and `transaction_executed` always `false`.
 - **Memory Firewall** (`packages/core/src/memory-firewall`) enforces quota, inert payloads, and similarity hooks; no persistent store in M7.
 - **Egress Firewall** (`packages/core/src/egress-firewall`) validates contracted output, allowlisted destinations, and exfil patterns; no live transmission in M8.
+- **Revocation Engine** (`packages/core/src/revocation-engine`) applies quarantine/revoke signals, bumps epochs, invalidates in-flight tokens, and gates heartbeat renewal.
 - No payment execution or ungated production T3 writes.
 
 ## Prototype reference

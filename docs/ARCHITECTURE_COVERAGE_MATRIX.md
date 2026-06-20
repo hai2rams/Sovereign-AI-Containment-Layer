@@ -182,10 +182,10 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Nonce-bound heartbeat | Replay-resistant renewal | M9, M12 | Planned | — | |
-| Renewal ceilings | Max renewals per session | M9 | Planned | — | `renewal_in_flight` in envelope |
-| Replay rejection | Duplicate nonce rejected | M9, M10 | Planned | — | Red-team: heartbeat replay |
-| Epoch consistency | Heartbeat tied to containment epoch | M9 | Planned | — | |
+| Nonce-bound heartbeat | Replay-resistant renewal | M9, M12 | Complete | `heartbeat.test.ts` | |
+| Renewal ceilings | Max renewals per session | M9 | Complete | `heartbeat.test.ts` | `renewal_in_flight` in envelope |
+| Replay rejection | Duplicate nonce rejected | M9, M10 | Complete | `heartbeat.test.ts` | Red-team: heartbeat replay |
+| Epoch consistency | Heartbeat tied to containment epoch | M9 | Complete | `heartbeat.test.ts` | |
 
 **Scope:** Full Product
 
@@ -244,10 +244,10 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Session containment epoch | `containment_epoch` monotonic | M9 | Planned | Envelope schema | |
-| Global/release revocation epoch | `revocation_epoch` + status | M9, M4 | Planned | — | T3 root in M4 |
-| Risk escalation | Semantic → envelope `risk_mode` | M2, M9 | Partial | `semantic-policy-engine.test.ts` | Full kill switch in M9 |
-| Kill switch behavior | Hard stop on revoke/quarantine | M9 | Planned | — | |
+| Session containment epoch | `containment_epoch` monotonic | M9 | Complete | `revocation-transition.test.ts` | Bumped on revocation signal |
+| Global/release revocation epoch | `revocation_epoch` + status | M9, M4 | Complete | `revocation-transition.test.ts` | T3 root in M4 |
+| Risk escalation | Semantic → envelope `risk_mode` | M2, M9 | Complete | `semantic-policy-engine.test.ts`, `risk-escalation.test.ts` | Full kill switch in M9 |
+| Kill switch behavior | Hard stop on revoke/quarantine | M9 | Complete | `revocation-wiring.test.ts`, `in-flight-race.test.ts` | |
 
 **Scope:** Full Product · Revocation race is **Presentation Slice** (optional judge scenario)
 
@@ -261,8 +261,8 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | Parameter swap | Executor verification failure | M6, M10 | Partial | `tool-executor-verifier.test.ts`, `demo/scenarios/parameter-swap.json` | **Presentation Slice** |
 | Memory poisoning | Memory firewall containment | M7, M10 | Partial | `memory-firewall.test.ts`, `demo/scenarios/memory-poisoning.json` | **Presentation Slice** |
 | Duplicate JSON key | Strict JSON rejection | M1, M10 | Complete | `strict-json-intake.test.ts` | Full + demo |
-| Revocation race | Epoch race handling | M9, M10 | Planned | `demo/scenarios/revocation-race.json` | Optional **Presentation Slice** |
-| Heartbeat replay | Nonce replay rejection | M9, M10 | Planned | — | Full product |
+| Revocation race | Epoch race handling | M9, M10 | Partial | `in-flight-race.test.ts`, `demo/scenarios/revocation-race.json` | Optional **Presentation Slice** |
+| Heartbeat replay | Nonce replay rejection | M9, M10 | Partial | `heartbeat.test.ts` | Full product |
 | Telemetry spoofing | Hash chain / validation reject | M3, M10 | Planned | `demo/scenarios/telemetry-spoofing.json` | Optional **Presentation Slice** |
 
 **Scope:** M10 = Full Product harness; individual scenarios marked above where demo-only narrative applies
@@ -310,7 +310,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M6 | Tool executor verification | Complete |
 | M7 | Memory firewall | Complete |
 | M8 | Egress firewall | Complete |
-| M9 | Revocation, quarantine, heartbeat | Planned |
+| M9 | Revocation, quarantine, heartbeat | Complete |
 | M10 | Red-team scenario engine | Planned |
 | M11 | Full dashboard | Planned |
 | M12 | AppTest / integration | In Progress |
