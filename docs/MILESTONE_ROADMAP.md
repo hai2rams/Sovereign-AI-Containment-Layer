@@ -30,7 +30,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M10** | Red-team scenario engine | Complete |
 | **M11** | Streamlit dashboard (full control plane) | Complete |
 | **M12** | AppTest and integration validation | Complete |
-| **M13** | Final documentation and pitch/demo material | Planned |
+| **M13** | Final documentation and pitch/demo material | Complete |
 
 ### M0 — Clean project skeleton
 
@@ -156,8 +156,9 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M13 — Final documentation and pitch/demo material
 
-- [ ] Complete `MASTER_ARCHITECTURE_SPEC.md`
-- [ ] Operator runbooks and ADRs
+- [x] Complete `MASTER_ARCHITECTURE_SPEC.md`
+- [x] Operator runbooks and ADRs
+- [x] Demo playbook with runnable commands
 - [ ] Architecture diagrams and pitch deck source
 - [ ] Judge demo script (see Track 2) as one deliverable — not the whole product
 

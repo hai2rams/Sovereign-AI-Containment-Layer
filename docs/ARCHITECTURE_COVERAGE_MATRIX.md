@@ -314,7 +314,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M10 | Red-team scenario engine | Complete |
 | M11 | Full dashboard | Complete |
 | M12 | AppTest / integration | Complete |
-| M13 | Thesis packaging, pitch material | Planned |
+| M13 | Thesis packaging, pitch material | Complete |
 
 ---
 

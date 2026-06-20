@@ -31,12 +31,27 @@ Memory writes pass through `evaluateMemoryWrite` in `packages/core/src/memory-fi
 
 Covered by `packages/core/tests/memory-firewall/memory-firewall.test.ts`.
 
-## Commands (future)
+## Commands
 
 ```bash
-npx tsx scripts/run-demo.ts --scenario golden-path
-npx tsx scripts/reset-demo.ts
-npx tsx scripts/export-trace.ts
+# Run one scenario (JSON output)
+npm run demo -- --scenario=golden-path
+
+# Compare against golden expected output
+npm run demo -- --scenario=poisoned-invoice --compare-expected
+
+# Run all architecture scenarios
+npm run demo:all
 ```
 
-Scripts remain stubs until demo wiring milestones.
+## Dashboard walkthrough
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Panels derive state from `telemetry.v1` JSONL — semantic, tokens, tool executor, audit, blast radius, anchored roots.
+
+## Scenario coverage
+
+All six architecture scenarios are runnable via `scripts/run-demo.ts` and validated in CI (`npm run ci`).
