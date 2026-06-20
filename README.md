@@ -1,54 +1,53 @@
 # Sovereign AI Containment Layer
 
-**M0 skeleton only** — clean architecture rebuild. No payment execution, no secrets, no production T3 writes.
+We do **not** claim the LLM is inherently safe. We claim autonomous agents can only operate inside a **certified, hash-locked, attested, policy-bound, auditable, and revocable** containment layer.
 
-We do **not** claim that an LLM is inherently safe. We claim that an autonomous agent can only operate inside a **certified, hash-locked, attested, policy-bound, auditable, and revocable** containment layer.
+## What this repo is
 
-## Repository strategy
+A full architecture implementation — not just a judge demo. The **judge demo** is a curated proof slice (golden path, poisoned invoice, parameter swap, memory poisoning, plus optional revocation/telemetry scenarios). It demonstrates the containment claim visually; it does **not** define the full build scope.
 
-| Branch / tag | Purpose |
-|--------------|---------|
-| `prototype/t3-validated` | Preserved working prototype (reference) |
-| `prototype-t3-validated-v1` | Immutable tag on prototype state |
-| `clean-main` | Architecture-aligned rebuild (**this branch**) |
-| `main` | Prior integration history |
+See **`docs/MILESTONE_ROADMAP.md`** for the complete implementation roadmap (M0–M13) and the separate judge-demo track.
 
-Old T3/contract code is **not** deleted — it remains on the prototype branch for reference. Only useful anchoring logic will be ported later into `packages/t3-adapter`.
+## Containment claim (demo narrative)
 
-## Layout (M0)
+1. Model receives only a **sanitized task packet** — never private `StateEnvelope` fields.
+2. Model emits only a structural **ActionProposal**.
+3. **Deterministic semantic policy** decides if the action is meaningfully allowed — no LLM approval.
+4. Future layers add tokens, tool verification, memory/egress firewalls, T3 anchoring, and revocation.
 
-```text
-docs/                    Locked architecture & roadmap placeholders
-packages/core/           Containment domain (no T3 contract deps)
-packages/t3-adapter/     AnchorAdapter interface placeholder
-dashboard/               Streamlit control-plane shell
-demo/scenarios/          Scenario fixture placeholders
-data/telemetry/          Telemetry JSONL placeholder
-tests/                   Integration + dashboard tests
-scripts/                 Demo script stubs
-```
+**Current progress:** M0–M2 complete on `clean-main` (boundary validators + semantic policy engine).
 
 ## Quick start
 
 ```bash
-npm install
-npm run build
-npm test
+npm install && npm run build && npm test
 ```
 
 ```bash
-pip install -r dashboard/requirements.txt
-# or: python3 -m venv .venv && .venv/bin/pip install -r dashboard/requirements.txt
-python -m pytest tests/dashboard
+python3 -m venv .venv && .venv/bin/pip install -r dashboard/requirements.txt
+.venv/bin/python -m pytest tests/dashboard
 streamlit run dashboard/app.py
 ```
 
-## M0 boundaries
+## Layout
 
-- `packages/core` defines abstract root objects — no `@terminal3/t3n-sdk`
-- `packages/t3-adapter` defines `AnchorAdapter` / `AnchorReceipt` placeholder
-- Dashboard components are shells — no weakened policy paths for UI convenience
+```text
+packages/core/        Containment domain (no direct T3 contract deps)
+packages/t3-adapter/  Trust-anchor adapter boundary
+dashboard/            Streamlit control plane (read-mostly)
+demo/scenarios/       Scenario fixtures (judge + full red-team)
+docs/                 Architecture specs and full roadmap
+```
 
-See `docs/MASTER_ARCHITECTURE_SPEC.md` and `docs/MILESTONE_ROADMAP.md`.
+## Branches
 
-**Do not proceed to M1 until M0 is reviewed.**
+| Branch / tag | Purpose |
+|--------------|---------|
+| `clean-main` | Architecture-aligned rebuild |
+| `prototype/t3-validated` | Preserved working prototype |
+| `prototype-t3-validated-v1` | Immutable prototype tag |
+
+## Boundaries (always)
+
+- No secrets committed · No production T3 writes without review · No payment execution in skeleton paths
+- `packages/core` never imports T3 contract code directly
