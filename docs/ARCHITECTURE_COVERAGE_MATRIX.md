@@ -273,12 +273,12 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 
 | Architecture Requirement | Locked Rule | Implementation Milestone | Status | Test Coverage | Notes |
 |--------------------------|-------------|--------------------------|--------|---------------|-------|
-| Read-only visualization | No tool/payment execution from UI | M0, M11 | Partial | `tool_executor_panel` warning | |
-| Split-screen model/control-plane view | `split_panels` layout | M0, M11 | Partial | `tests/dashboard` | Shell complete |
-| Redaction mode | `redaction.py`, `safe_render.py` | M11 | Planned | `test_redaction` | |
-| Timeline | Telemetry-driven timeline | M3, M11 | Planned | `test_telemetry_reader` | **Presentation Slice** |
+| Read-only visualization | No tool/payment execution from UI | M0, M11 | Complete | `test_dashboard_shell.py` | |
+| Split-screen model/control-plane view | `split_panels` layout | M0, M11 | Complete | `tests/dashboard` | Shell complete |
+| Redaction mode | `redaction.py`, `safe_render.py` | M11 | Partial | `test_redaction` | |
+| Timeline | Telemetry-driven timeline | M3, M11 | Complete | `test_telemetry_reader` | **Presentation Slice** |
 | Telemetry chain status | Hash chain health display | M3, M11 | Planned | — | |
-| Safe rendering only | No secret leakage | M11 | Planned | `safe_render.py` stub | |
+| Safe rendering only | No secret leakage | M11 | Partial | `safe_render.py` stub | |
 
 **Scope:** Full Product (M11) · Judge walkthrough = **Presentation Slice**
 
@@ -312,7 +312,7 @@ This matrix maps every **locked v9/v10 architecture requirement** to an implemen
 | M8 | Egress firewall | Complete |
 | M9 | Revocation, quarantine, heartbeat | Complete |
 | M10 | Red-team scenario engine | Complete |
-| M11 | Full dashboard | Planned |
+| M11 | Full dashboard | Complete |
 | M12 | AppTest / integration | In Progress |
 | M13 | Thesis packaging, pitch material | Planned |
 

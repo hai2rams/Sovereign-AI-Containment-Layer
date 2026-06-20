@@ -83,3 +83,9 @@ The Streamlit dashboard is a **read-mostly control plane**. It must not weaken c
 - **In-flight race** — tokens issued before epoch bump lose races against updated envelope state.
 - **Heartbeat** — nonce-bound renewal with replay rejection, renewal ceilings, and containment epoch binding.
 - **Token Broker wired** — `evaluateEnvelopeRevocationGate` blocks issuance when revocation state or kill switch is active.
+
+## M11 implementation notes
+
+- **Dashboard reads telemetry JSONL** — `data/telemetry/telemetry_stream.jsonl` with fallback to `dashboard/fixtures/sample_telemetry.jsonl`.
+- **Control-plane snapshot** — `control_plane_state.py` derives roots, semantic, token, executor, audit, and blast-radius from `telemetry.v1` events.
+- **Read-only boundary preserved** — tool executor panel displays verification only; no payment or tool execution from UI.

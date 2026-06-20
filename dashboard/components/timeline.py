@@ -1,12 +1,29 @@
-"""Event timeline — M0 placeholder."""
+"""Event timeline — telemetry.v1 driven."""
 
 import streamlit as st
+
+from services.telemetry_reader import latest_control_plane_snapshot
 
 
 def render_timeline(events: list[dict]) -> None:
     st.subheader("Timeline")
-    if not events:
-        st.info("No telemetry events (M0 placeholder).")
+    snapshot = latest_control_plane_snapshot()
+    timeline = snapshot.get("timeline") or []
+
+    if not timeline and not events:
+        st.info("No telemetry events.")
         return
-    for event in events[-5:]:
-        st.write(f"`{event.get('ts', '?')}` — {event.get('kind', 'event')}")
+
+    rows = timeline if timeline else [
+        {
+            "timestamp": event.get("emitted_at") or event.get("ts", "?"),
+            "event_type": event.get("event_type") or event.get("kind", "event"),
+            "sequence": event.get("event_sequence"),
+        }
+        for event in events[-8:]
+    ]
+
+    for row in rows:
+        seq = row.get("sequence")
+        prefix = f"#{seq} " if seq is not None else ""
+        st.write(f"`{row['timestamp']}` — {prefix}`{row['event_type']}`")

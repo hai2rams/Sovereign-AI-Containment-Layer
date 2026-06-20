@@ -16,7 +16,7 @@ from services.telemetry_reader import read_telemetry_tail
 st.set_page_config(page_title="Containment Layer", layout="wide")
 
 st.title("Sovereign AI Containment Layer")
-st.caption("M0 control-plane shell — read-only, no payment or tool execution.")
+st.caption("M11 control-plane dashboard — read-only, no payment or tool execution.")
 
 render_header_matrix()
 render_split_panels(read_telemetry_tail())

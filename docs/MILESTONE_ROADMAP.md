@@ -28,7 +28,7 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 | **M8** | Output / egress firewall | Complete |
 | **M9** | Revocation and quarantine engine | Complete |
 | **M10** | Red-team scenario engine | Complete |
-| **M11** | Streamlit dashboard (full control plane) | Planned |
+| **M11** | Streamlit dashboard (full control plane) | Complete |
 | **M12** | AppTest and integration validation | Planned |
 | **M13** | Final documentation and pitch/demo material | Planned |
 
@@ -142,10 +142,10 @@ Do not collapse full-architecture milestones because the judge demo shows fewer 
 
 ### M11 — Streamlit dashboard (full control plane)
 
-- [ ] Wire all component panels to live telemetry + policy state
-- [ ] Header matrix shows anchored roots when M4 available
-- [ ] Timeline, semantic rules, tokens, audit, blast radius — read-mostly
-- [ ] Preserve M4.5 boundary: dashboard never weakens policy for UI convenience
+- [x] Wire all component panels to live telemetry + policy state
+- [x] Header matrix shows anchored roots when M4 available
+- [x] Timeline, semantic rules, tokens, audit, blast radius — read-mostly
+- [x] Preserve M4.5 boundary: dashboard never weakens policy for UI convenience
 
 ### M12 — AppTest and integration validation
 
